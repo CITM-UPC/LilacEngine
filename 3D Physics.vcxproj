@@ -95,7 +95,7 @@ copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)vcpkg\installed\x64-windows\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -103,10 +103,9 @@ copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PreBuildEvent>
-      <Command>git submodule update--recursive--remote
-call ..\vcpkg\bootstrap-vckpg.bat
- ..\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding]
-copy ..\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
+      <Command>call $(SolutionDir)vcpkg\bootstrap-vckpg.bat
+$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]
+copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -143,7 +142,7 @@ copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)vcpkg\installed\x64-windows\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -153,10 +152,9 @@ copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PreBuildEvent>
-      <Command>git submodule update--recursive--remote
-call ..\vcpkg\bootstrap-vckpg.bat
- ..\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding]
-copy ..\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
+      <Command>call $(SolutionDir)vcpkg\bootstrap-vckpg.bat
+$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]
+copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
