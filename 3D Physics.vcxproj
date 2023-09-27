@@ -82,10 +82,9 @@
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PreBuildEvent>
-      <Command>git submodule update --recursive --remote
-call ..\vcpkg\bootstrap-vckpg.bat
- ..\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding] --triplet x64-windows
-copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
+      <Command>call .\vcpkg\bootstrap-vckpg.bat
+ .\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding] --triplet x64-windows
+copy.\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -95,18 +94,22 @@ copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)vcpkg\installed\x64-windows\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;imgui.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>call $(SolutionDir)vcpkg\bootstrap-vckpg.bat
-$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]
-copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
+      <Command>call $(SolutionDir)vcpkg\bootstrap-vcpkg.bat
+$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]</Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)vcpkg\installed\x64-windows\bin\*.* $(OutDir) </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -127,10 +130,9 @@ copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PreBuildEvent>
-      <Command>git submodule update --recursive --remote
-call ..\vcpkg\bootstrap-vckpg.bat
- ..\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding] --triplet x64-windows
-copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
+      <Command>call .\vcpkg\bootstrap-vckpg.bat
+ .\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding] --triplet x64-windows
+copy.\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,7 +144,7 @@ copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link;$(SolutionDir)vcpkg\installed\x64-windows\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -150,12 +152,16 @@ copy ..\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib\;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;imgui.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>call $(SolutionDir)vcpkg\bootstrap-vckpg.bat
-$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]
-copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
+      <Command>call $(SolutionDir)vcpkg\bootstrap-vcpkg.bat
+$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]</Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy $(SolutionDir)vcpkg\installed\x64-windows\bin\*.* $(OutDir) </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
@@ -168,14 +174,12 @@ copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
     <ClInclude Include="ModuleRenderer3D.h" />
     <ClInclude Include="p2List.h" />
     <ClInclude Include="Module.h" />
-    <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleSceneIntro.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2DynArray.h" />
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="PhysBody3D.h" />
-    <ClInclude Include="Primitive.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +189,6 @@ copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCamera3D.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
@@ -193,7 +196,6 @@ copy .\vcpkg\installed\x64-windows\bin\"."$(OutDir)</Command>
     <ClCompile Include="ModuleSceneIntro.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="PhysBody3D.cpp" />
-    <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

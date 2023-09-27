@@ -2,7 +2,7 @@
 #include "Module.h"
 #include "p2DynArray.h"
 #include "Globals.h"
-#include "Primitive.h"
+//#include "Primitive.h"
 
 #define MAX_SNAKE 2
 
@@ -31,13 +31,13 @@ public:
 	*/
 
 	PhysBody3D* pb_chassis;
-	Cube p_chassis;
+	//Cube p_chassis;
 
 	PhysBody3D* pb_wheel;
-	Cylinder p_wheel;
+	//Cylinder p_wheel;
 
 	PhysBody3D* pb_wheel2;
-	Cylinder p_wheel2;
+	//Cylinder p_wheel2;
 
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
