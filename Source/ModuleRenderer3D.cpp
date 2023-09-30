@@ -1,11 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
 #include "vcpkg/packages/sdl2_x64-windows/include/SDL2/SDL_opengl.h"
-#include "vcpkg/packages/imgui_x64-windows/include/imgui.h"
-#include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_sdl2.h"
-#include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_opengl3.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
@@ -102,11 +98,6 @@ bool ModuleRenderer3D::Init()
 
 	// Projection matrix for
 	OnResize(SCREEN_WIDTH, SCREEN_HEIGHT);
-
-
-	// Setup Platform/Renderer backends
-	ImGui_ImplOpenGL3_Init();
-	ImGui_ImplSDL2_InitForOpenGL(App->window->window, context);
 
 	return ret;
 }
