@@ -2,12 +2,12 @@
 #include "Application.h"
 #include "Globals.h"
 
-#include "SDL/include/SDL.h"
-#pragma comment( lib, "SDL/libx86/SDL2.lib" )
-#pragma comment( lib, "SDL/libx86/SDL2main.lib" )
-#include "imgui/imgui.h"
-#include "imgui/imgui_impl_sdl2.h"
-#include "imgui/imgui_impl_opengl2.h"
+#include "vcpkg/packages/sdl2_x64-windows/include/SDL2/SDL.h"
+#pragma comment( lib, "SDL2.lib" )
+#pragma comment( lib, "SDL2main.lib" )
+#include "vcpkg/packages/imgui_x64-windows/include/imgui.h"
+#include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_sdl2.h"
+#include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_opengl3.h"
 
 enum main_states
 {

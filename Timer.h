@@ -2,7 +2,7 @@
 #define __TIMER_H__
 
 #include "Globals.h"
-#include "SDL\include\SDL.h"
+#include "vcpkg/packages/sdl2_x64-windows/include/SDL2/SDL.h"
 
 class Timer
 {

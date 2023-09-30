@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
-#include "SDL\include\SDL_opengl.h"
+#include "vcpkg/packages/sdl2_x64-windows/include/SDL2/SDL_opengl.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
