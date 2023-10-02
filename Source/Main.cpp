@@ -5,6 +5,7 @@
 #include "vcpkg/packages/sdl2_x64-windows/include/SDL2/SDL.h"
 #pragma comment( lib, "SDL2.lib" )
 #pragma comment( lib, "SDL2main.lib" )
+#pragma comment( lib, "imgui.lib" )
 #include "vcpkg/packages/imgui_x64-windows/include/imgui.h"
 #include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_sdl2.h"
 #include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_opengl3.h"
