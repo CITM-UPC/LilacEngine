@@ -94,18 +94,18 @@ copy.\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>$(SolutionDir)Source\vcpkg\installed\x64-windows\lib\;$(SolutionDir)Source\vcpkg\installed\x64-windows\lib\manual-link\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;imgui.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Source\vcpkg\installed\x64-windows\lib;$(SolutionDir)Source\vcpkg\packages\imgui_x64-windows\lib;$(SolutionDir)Source\vcpkg\installed\x64-windows\lib\manual-link\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;OpenGL32.lib;imgui.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call $(SolutionDir)Source\vcpkg\bootstrap-vcpkg.bat
-$(SolutionDir)Source\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]</Command>
+$(SolutionDir)Source\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental] --recurse --triplet x64-windows</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)Source\vcpkg\installed\x64-windows\bin\*.* $(OutDir) </Command>
@@ -144,7 +144,7 @@ copy.\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SDLCheck>false</SDLCheck>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir)vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Source\vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -152,12 +152,12 @@ copy.\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>$(SolutionDir)Source\vcpkg\installed\x64-windows\lib\;$(SolutionDir)Source\vcpkg\installed\x64-windows\lib\manual-link\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;imgui.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Source\vcpkg\installed\x64-windows\lib;$(SolutionDir)Source\vcpkg\packages\imgui_x64-windows\lib;$(SolutionDir)Source\vcpkg\installed\x64-windows\lib\manual-link\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;OpenGL32.lib;imgui.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call $(SolutionDir)Source\vcpkg\bootstrap-vcpkg.bat
-$(SolutionDir)Source\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental]</Command>
+$(SolutionDir)Source\vcpkg\vcpkg.exe install opengl glew sdl2 imgui[opengl3-binding,sdl2-binding,docking-experimental] --recurse --triplet x64-windows</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)Source\vcpkg\installed\x64-windows\bin\*.* $(OutDir) </Command>

@@ -3,6 +3,7 @@
 #include "ModuleImGui.h"
 #include "ModuleWindow.h"
 #include "vcpkg/packages/imgui_x64-windows/include/imgui.h"
+//#include "vcpkg/packages/imgui_x64-windows/include/imgui_widgets.h"
 #include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_sdl2.h"
 #include "vcpkg/packages/imgui_x64-windows/include/imgui_impl_opengl3.h"
 #include "vcpkg/packages/sdl2_x64-windows/include/SDL2/SDL_opengles2.h"
@@ -18,16 +19,16 @@ bool ModuleImGui::Init()
 {
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	//JULS: This should be in ModuleInput
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
-	
-	// Setup Platform/Renderer backends
+	//ImGui::CreateContext();
+	//ImGuiIO& io = ImGui::GetIO();
+	////JULS: This should be in ModuleInput
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	//io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
+	//
+	//// Setup Platform/Renderer backends
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);	
-	ImGui_ImplOpenGL3_Init();
+	//ImGui_ImplOpenGL3_Init();
 	
 	return true;
 }
