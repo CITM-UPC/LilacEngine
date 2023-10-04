@@ -17,9 +17,23 @@ ModuleImGui::~ModuleImGui()
 
 bool ModuleImGui::Init() 
 {
+	LOG("Init SDL ImGui event system");
+	bool ret = true;
 	
+	// Setup Dear ImGui context
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	//JULS: This should be in ModuleInput
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
+
+	// Setup Platform/Renderer backends
+	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
+	ImGui_ImplOpenGL3_Init();
 	
-	return true;
+	return ret;
 }
 
 update_status ModuleImGui::PreUpdate(float dt)
