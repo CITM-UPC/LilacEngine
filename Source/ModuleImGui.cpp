@@ -38,18 +38,22 @@ bool ModuleImGui::Init()
 
 update_status ModuleImGui::PreUpdate(float dt)
 {
-	return UPDATE_CONTINUE;
-}
-
-update_status ModuleImGui::Update(float dt) 
-{
 	// (After event loop)
 	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
+
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleImGui::Update(float dt) 
+{
+	// JULS: I may change this to another place to put the 
 	ImGui::ShowDemoWindow(); // Show demo window! :)
-	
+	ImGui::Text("Close the app");
+	if (ImGui::Button("X"))
+		return UPDATE_STOP;
 
 	// Rendering
 	// (Your code clears your framebuffer, renders your other stuff etc.)

@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModuleWindow.h"
 #include "imgui.h"
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
@@ -114,10 +115,20 @@ update_status ModuleInput::PreUpdate(float dt)
 					App->renderer3D->OnResize(e.window.data1, e.window.data2);
 			}
 		}
+
+		// Initialize mouse in ImGui
+		ImGui_ImplSDL2_ProcessEvent(&e);
+		if (e.type == SDL_QUIT)
+			return UPDATE_STOP;
+		if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_CLOSE && e.window.windowID == SDL_GetWindowID(App->window->window))
+			return UPDATE_STOP;
 	}
 
 	if(quit == true || keyboard[SDL_SCANCODE_ESCAPE] == KEY_UP)
 		return UPDATE_STOP;
+
+	// Initialize mouse in ImGui
+
 
 	return UPDATE_CONTINUE;
 }
