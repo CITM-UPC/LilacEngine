@@ -49,11 +49,26 @@ update_status ModuleImGui::PreUpdate(float dt)
 
 update_status ModuleImGui::Update(float dt) 
 {
-	// JULS: I may change this to another place to put the 
-	ImGui::ShowDemoWindow(); // Show demo window! :)
+	// HOMEWORK 1
+	ImGui::ShowDemoWindow();
+	ImGui::Begin("Homework 1");
 	ImGui::Text("Close the app");
 	if (ImGui::Button("X"))
 		return UPDATE_STOP;
+	ImGui::End();
+	
+	// HOMEWORK 3
+	ImGui::Begin("Configuration");
+	ImGui::BeginMainMenuBar();
+	ImGui::EndMainMenuBar();
+	ImGui::Spacing();
+	ImGui::CollapsingHeader("Window");
+	ImGui::CollapsingHeader("Renderer");
+	ImGui::CollapsingHeader("Input");
+	ImGui::CollapsingHeader("Audio");
+	ImGui::CollapsingHeader("Other");
+	ImGui::EndMenu();
+	ImGui::End();
 
 	// Rendering
 	// (Your code clears your framebuffer, renders your other stuff etc.)
@@ -77,4 +92,8 @@ bool ModuleImGui::CleanUp()
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
+}
+
+void ModuleImGui::UI() {
+
 }
