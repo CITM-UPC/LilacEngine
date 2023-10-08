@@ -17,6 +17,6 @@ public:
 	void UI();
 
 private:
-
+	bool about;
 
 };

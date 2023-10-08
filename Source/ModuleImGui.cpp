@@ -52,11 +52,11 @@ update_status ModuleImGui::Update(float dt)
 	// HOMEWORK 1
 	ImGui::ShowDemoWindow();
 	ImGui::Begin("Homework 1");
-	ImGui::Text("Close the app");
-	if (ImGui::Button("X"))
+	if (ImGui::Button("Close the app"))
 		return UPDATE_STOP;
 	ImGui::End();
 	
+#pragma region MENU
 	// HOMEWORK 3
 	ImGui::Begin("Configuration");
 	ImGui::BeginMainMenuBar();
@@ -66,9 +66,35 @@ update_status ModuleImGui::Update(float dt)
 	ImGui::CollapsingHeader("Renderer");
 	ImGui::CollapsingHeader("Input");
 	ImGui::CollapsingHeader("Audio");
-	ImGui::CollapsingHeader("Other");
+	ImGui::CollapsingHeader("About");
 	ImGui::EndMenu();
 	ImGui::End();
+
+	ImGui::BeginMainMenuBar();
+	if (ImGui::BeginMenu("Help")) {
+		if (ImGui::MenuItem("About")) {
+			about = !about;
+		}
+	}
+
+	if (about) {
+		ImGui::Begin("Help");
+		ImGui::Text("Lilac Engine");
+		ImGui::Text("A great engine in development");
+		ImGui::Text("by Júlia Serra Trujillo and Joel Chaves Moreno");
+		ImGui::Spacing();
+		ImGui::Text("3rd Party Libraries used:");
+		ImGui::Text("- SDL");
+		ImGui::Text("- ImGui");
+		ImGui::Spacing();
+		ImGui::Text("License:");
+		ImGui::Spacing();
+		ImGui::Text("MIT License");
+		ImGui::Spacing();
+		ImGui::Text("Copyright (c) 2023 Júlia Serra Trujillo and Joel Chaves Moreno");
+	}
+
+#pragma endregion MENU
 
 	// Rendering
 	// (Your code clears your framebuffer, renders your other stuff etc.)
