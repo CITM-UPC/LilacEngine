@@ -61,8 +61,11 @@ update_status ModuleImGui::Update(float dt)
 	ImGui::Begin("Configuration");
 	ImGui::BeginMainMenuBar();
 	ImGui::EndMainMenuBar();
-	ImGui::Spacing();
 	if (ImGui::CollapsingHeader("Window")) {
+		float v = 1.0;
+		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0)) {
+			App->window->SetWindowBrightness(v);
+		}
 		if (ImGui::Checkbox("Fullscreen", &fullscreen)) {
 			App->window->SetFullscreen(fullscreen);
 		}
@@ -70,7 +73,7 @@ update_status ModuleImGui::Update(float dt)
 			App->window->SetResizable(resizable);
 		}
 		if (ImGui::Checkbox("Borderless", &borderless)) {
-			App->window->SetBorderless(borderless);
+			App->window->SetBorderless(!borderless);
 		}
 	}
 	if (ImGui::CollapsingHeader("Renderer")) {

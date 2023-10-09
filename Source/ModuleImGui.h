@@ -15,7 +15,6 @@ public:
 	bool CleanUp();
 
 	void UI();
-
 private:
 	// Booleans to activate menus that are not shown
 	// about -> Information about the engine
