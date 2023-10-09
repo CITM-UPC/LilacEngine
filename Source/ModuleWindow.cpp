@@ -93,3 +93,19 @@ void ModuleWindow::SetTitle(const char* title)
 {
 	SDL_SetWindowTitle(window, title);
 }
+
+void ModuleWindow::SetFullscreen(bool fullscreen) {
+	SDL_SetWindowFullscreen(window, (SDL_bool)fullscreen);
+}
+
+void ModuleWindow::SetResizable(bool resizable) {
+	SDL_SetWindowResizable(window, (SDL_bool)resizable);
+}
+
+void ModuleWindow::SetBorderless(bool borderless) {
+	SDL_SetWindowBordered(window, (SDL_bool)borderless);
+}
+
+void ModuleWindow::SetFullDesktop(bool fullDesktop) {
+	//SDL_SetWindowFu
+}

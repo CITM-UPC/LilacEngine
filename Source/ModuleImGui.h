@@ -17,6 +17,14 @@ public:
 	void UI();
 
 private:
-	bool about;
+	// Booleans to activate menus that are not shown
+	// about -> Information about the engine
+	// showcase -> Imgui Demo window
+	bool about = false, showcase = false;
 
+	//Booleans to change the properties of our window
+	bool fullscreen, resizable, borderless, fullDesktop;
+
+	//Bool to set Vsync
+	bool vsync;
 };

@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleImGui.h"
 #include "ModuleWindow.h"
+#include "ModuleRenderer3D.h"
 #include "imgui.h"
 //#include "vcpkg/packages/imgui_x64-windows/include/imgui_widgets.h"
 #include "imgui_impl_sdl2.h"
@@ -33,6 +34,7 @@ bool ModuleImGui::Init()
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init();
 	
+
 	return ret;
 }
 
@@ -49,21 +51,34 @@ update_status ModuleImGui::PreUpdate(float dt)
 
 update_status ModuleImGui::Update(float dt) 
 {
-	// HOMEWORK 1
-	ImGui::ShowDemoWindow();
-	ImGui::Begin("Homework 1", NULL);
+	// Close the app
+	ImGui::Begin("Quit", NULL, ImGuiWindowFlags_NoCollapse);
 	if (ImGui::Button("Close the app"))
 		return UPDATE_STOP;
 	ImGui::End();
 	
 #pragma region MENU
-	// HOMEWORK 3
+	// Configuration
 	ImGui::Begin("Configuration");
 	ImGui::BeginMainMenuBar();
 	ImGui::EndMainMenuBar();
 	ImGui::Spacing();
-	ImGui::CollapsingHeader("Window");
-	ImGui::CollapsingHeader("Renderer");
+	if (ImGui::CollapsingHeader("Window")) {
+		if (ImGui::Checkbox("Fullscreen", &fullscreen)) {
+			App->window->SetFullscreen(fullscreen);
+		}
+		if (ImGui::Checkbox("Resizable", &resizable)) {
+			App->window->SetResizable(resizable);
+		}
+		if (ImGui::Checkbox("Borderless", &borderless)) {
+			App->window->SetBorderless(borderless);
+		}
+	}
+	if (ImGui::CollapsingHeader("Renderer")) {
+		if (ImGui::Checkbox("Vsync", &vsync)) {
+			App->renderer3D->SetVsync(vsync);
+		}
+	}
 	ImGui::CollapsingHeader("Input");
 	ImGui::CollapsingHeader("Audio");
 	ImGui::CollapsingHeader("About");
@@ -72,10 +87,24 @@ update_status ModuleImGui::Update(float dt)
 
 	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("Help")) {
+		if (ImGui::MenuItem("Gui Demo")) {
+			showcase = !showcase;
+		}
+		if (ImGui::MenuItem("Documentation")) {
+			
+		}
+		if (ImGui::MenuItem("Download latest")) {
+			
+		}
+		if (ImGui::MenuItem("Report a bug")) {
+			
+		}
 		if (ImGui::MenuItem("About")) {
 			about = !about;
 		}
+		ImGui::EndMenu();
 	}
+	ImGui::EndMainMenuBar();
 
 	if (about) {
 		ImGui::OpenPopup("About");
@@ -113,6 +142,10 @@ update_status ModuleImGui::Update(float dt)
 			}
 			ImGui::EndPopup();
 		}
+	}
+
+	if (showcase) {
+		ImGui::ShowDemoWindow();
 	}
 
 #pragma endregion MENU
