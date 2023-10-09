@@ -151,5 +151,41 @@ void ModuleRenderer3D::OnResize(int width, int height)
 }
 
 void ModuleRenderer3D::SetVsync(bool vsync) {
-	///SDL_RenderSetVSync(SDL_Renderer * renderer, vsync);
+	//SDL_RenderSetVSync(renderer, vsync);
+}
+
+void ModuleRenderer3D::DrawAxis() {
+	glLineWidth(4.0);
+	glBegin(GL_LINES);
+	glColor3ub(255, 0, 0);
+	glVertex3d(0, 0, 0);
+	glVertex3d(0.8, 0, 0);
+	glColor3ub(0, 255, 0);
+	glVertex3d(0, 0, 0);
+	glVertex3d(0, 0.8, 0);
+	glColor3ub(0, 0, 1);
+	glVertex3d(0, 0, 0);
+	glVertex3d(0, 0, 0.8);
+	glEnd();
+}
+
+void ModuleRenderer3D::DrawGrid(int grid_size, int grid_step) {
+	glLineWidth(1.0);
+	glColor3ub(128, 128, 128);
+
+	glBegin(GL_LINES);
+	for (int i = -grid_size; i <= grid_size; i += grid_step) {
+		//XY plane
+		glVertex2i(i, -grid_size);
+		glVertex2i(i, grid_size);
+		glVertex2i(-grid_size, i);
+		glVertex2i(grid_size, i);
+
+		//XZ plane
+		glVertex3i(i, 0, -grid_size);
+		glVertex3i(i, 0, grid_size);
+		glVertex3i(-grid_size, 0, i);
+		glVertex3i(grid_size, 0, i);
+	}
+	glEnd();
 }

@@ -1,6 +1,8 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleSceneIntro.h"
+#include "ModuleRenderer3D.h"
+#include <GL\glew.h>
 //#include "Primitive.h"
 #include "PhysBody3D.h"
 
@@ -34,9 +36,83 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
-	//Plane p(0, 1, 0, 0);
-	//p.axis = true;
-	//p.Render();
+    App->renderer3D->DrawAxis();
+    App->renderer3D->DrawGrid(100, 1);
+    
+    //glRotated(0, 0, 1.0, 0);
+    //
+    //glBegin(GL_LINES);
+    //glColor3f(255, 0, 0);
+    //
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //
+    //glEnd();
+    ////part 2:
+    //glBegin(GL_QUADS);
+    //glColor3f(0.0f, 0.0f, 1.0f);
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //
+    //glColor3f(0.0f, 1.0f, 0.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //
+    //glColor3f(1.0f, 0.0f, 0.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //
+    //glColor3f(0.0f, 0.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //
+    //glColor3f(1.0f, 0.0f, 0.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //
+    //glColor3f(0.0f, 1.0f, 0.0f);
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //glEnd();
 
 	return UPDATE_CONTINUE;
 }

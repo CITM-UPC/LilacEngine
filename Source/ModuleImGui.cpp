@@ -4,7 +4,6 @@
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
 #include "imgui.h"
-//#include "vcpkg/packages/imgui_x64-windows/include/imgui_widgets.h"
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
 #include "SDL2/SDL_opengles2.h"
@@ -25,7 +24,8 @@ bool ModuleImGui::Init()
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
-	//JULS: This should be in ModuleInput
+	
+	//Enable
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         // IF using Docking Branch
@@ -33,7 +33,6 @@ bool ModuleImGui::Init()
 	// Setup Platform/Renderer backends
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init();
-	
 
 	return ret;
 }
@@ -81,7 +80,6 @@ update_status ModuleImGui::Update(float dt)
 	}
 	ImGui::CollapsingHeader("Input");
 	ImGui::CollapsingHeader("Audio");
-	ImGui::CollapsingHeader("About");
 	ImGui::EndMenu();
 	ImGui::End();
 

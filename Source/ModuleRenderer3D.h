@@ -20,6 +20,9 @@ public:
 	void OnResize(int width, int height);
 	void SetVsync(bool vsync);
 
+	void DrawAxis();
+	void DrawGrid(int grid_size, int grid_step);
+
 public:
 
 	Light lights[MAX_LIGHTS];
