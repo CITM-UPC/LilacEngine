@@ -50,6 +50,7 @@ update_status ModuleImGui::PreUpdate(float dt)
 
 update_status ModuleImGui::Update(float dt) 
 {
+	float v = 1.0;
 	// Close the app
 	ImGui::Begin("Quit", NULL, ImGuiWindowFlags_NoCollapse);
 	if (ImGui::Button("Close the app"))
@@ -62,7 +63,7 @@ update_status ModuleImGui::Update(float dt)
 	ImGui::BeginMainMenuBar();
 	ImGui::EndMainMenuBar();
 	if (ImGui::CollapsingHeader("Window")) {
-		float v = 1.0;
+		
 		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0)) {
 			App->window->SetWindowBrightness(v);
 		}
