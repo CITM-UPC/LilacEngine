@@ -167,11 +167,12 @@ update_status ModuleImGui::PostUpdate(float dt)
 
 bool ModuleImGui::CleanUp()
 {
+	LOG("Destroying Imgui context");
+	bool ret = true; 
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
 
-	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
 }

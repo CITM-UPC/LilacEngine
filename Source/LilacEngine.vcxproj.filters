@@ -75,7 +75,10 @@
     <ClInclude Include="ModuleImGui.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleAssimp.h">
+    <ClInclude Include="ModuleFbx.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,7 +128,10 @@
     <ClCompile Include="ModuleImGui.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleAssimp.cpp">
+    <ClCompile Include="ModuleFbx.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
