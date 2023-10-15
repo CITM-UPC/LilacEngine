@@ -8,11 +8,11 @@ public:
 	~ModuleFbx();
 
 	bool Init();
-	update_status PreUpdate(float dt);
-	update_status Update(float dt);
-	update_status PostUpdate(float dt);
+	//update_status PreUpdate(float dt);
+	//update_status Update(float dt);
+	//update_status PostUpdate(float dt);
 	bool CleanUp();
 
 private:
-	struct aiLogStream stream;
+	//struct aiLogStream stream;
 };

@@ -17,8 +17,8 @@ bool ModuleFbx::Init()
 {
 	LOG("Init SDL ImGui event system");
 	bool ret = true;
-	stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr); 
-	aiAttachLogStream(&stream);
+	//stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr); 
+	//aiAttachLogStream(&stream);
 
 	return ret;
 }

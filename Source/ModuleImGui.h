@@ -21,9 +21,14 @@ private:
 	// showcase -> Imgui Demo window
 	bool about = false, showcase = false;
 
-	//Booleans to change the properties of our window
+	// Booleans to change the properties of our window
+	float v = 1.0;
 	bool fullscreen, resizable, borderless, fullDesktop;
 
-	//Bool to set Vsync
+	// Bool to set Vsync
 	bool vsync;
+
+	//
+	char title[25];
+	float fps_log[];
 };

@@ -50,7 +50,6 @@ update_status ModuleImGui::PreUpdate(float dt)
 
 update_status ModuleImGui::Update(float dt) 
 {
-	float v = 1.0;
 	// Close the app
 	ImGui::Begin("Quit", NULL, ImGuiWindowFlags_NoCollapse);
 	if (ImGui::Button("Close the app"))
@@ -62,28 +61,34 @@ update_status ModuleImGui::Update(float dt)
 	ImGui::Begin("Configuration");
 	ImGui::BeginMainMenuBar();
 	ImGui::EndMainMenuBar();
-	if (ImGui::CollapsingHeader("Window")) {
+	if (ImGui::CollapsingHeader("Application")) {
 		
-		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0)) {
+		//sprintf_s(title, 25, "Framerate %.1f", fps_log[fps_log.size() - 1]);
+		//ImGui::PlotHistogram("##framerate", &fps_log, 
+	}
+	if (ImGui::CollapsingHeader("Window")) {
+		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0)) 
 			App->window->SetWindowBrightness(v);
-		}
-		if (ImGui::Checkbox("Fullscreen", &fullscreen)) {
+		if (ImGui::Checkbox("Fullscreen", &fullscreen))
 			App->window->SetFullscreen(fullscreen);
-		}
-		if (ImGui::Checkbox("Resizable", &resizable)) {
+		if (ImGui::Checkbox("Resizable", &resizable))
 			App->window->SetResizable(resizable);
-		}
-		if (ImGui::Checkbox("Borderless", &borderless)) {
+		if (ImGui::Checkbox("Borderless", &borderless))
 			App->window->SetBorderless(!borderless);
-		}
 	}
 	if (ImGui::CollapsingHeader("Renderer")) {
-		if (ImGui::Checkbox("Vsync", &vsync)) {
+		if (ImGui::Checkbox("Vsync", &vsync))
 			App->renderer3D->SetVsync(vsync);
-		}
 	}
-	ImGui::CollapsingHeader("Input");
-	ImGui::CollapsingHeader("Audio");
+	if (ImGui::CollapsingHeader("Input")) {
+
+	}
+	if (ImGui::CollapsingHeader("Audio")) {
+		//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
+		//
+		//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
+		//
+	}
 	ImGui::EndMenu();
 	ImGui::End();
 
