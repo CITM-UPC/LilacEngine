@@ -33,7 +33,7 @@ bool ModuleImGui::Init()
 	// Setup Platform/Renderer backends
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init();
-
+	
 	return ret;
 }
 
@@ -50,69 +50,9 @@ update_status ModuleImGui::PreUpdate(float dt)
 
 update_status ModuleImGui::Update(float dt) 
 {
-	// Close the app
-	ImGui::Begin("Quit", NULL, ImGuiWindowFlags_NoCollapse);
-	if (ImGui::Button("Close the app"))
-		return UPDATE_STOP;
-	ImGui::End();
-	
-#pragma region MENU
-	// Configuration
-	ImGui::Begin("Configuration");
-	ImGui::BeginMainMenuBar();
-	ImGui::EndMainMenuBar();
-	if (ImGui::CollapsingHeader("Application")) {
-		
-		//sprintf_s(title, 25, "Framerate %.1f", fps_log[fps_log.size() - 1]);
-		//ImGui::PlotHistogram("##framerate", &fps_log, 
-	}
-	if (ImGui::CollapsingHeader("Window")) {
-		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0)) 
-			App->window->SetWindowBrightness(v);
-		if (ImGui::Checkbox("Fullscreen", &fullscreen))
-			App->window->SetFullscreen(fullscreen);
-		if (ImGui::Checkbox("Resizable", &resizable))
-			App->window->SetResizable(resizable);
-		if (ImGui::Checkbox("Borderless", &borderless))
-			App->window->SetBorderless(!borderless);
-	}
-	if (ImGui::CollapsingHeader("Renderer")) {
-		if (ImGui::Checkbox("Vsync", &vsync))
-			App->renderer3D->SetVsync(vsync);
-	}
-	if (ImGui::CollapsingHeader("Input")) {
-
-	}
-	if (ImGui::CollapsingHeader("Audio")) {
-		//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
-		//
-		//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
-		//
-	}
-	ImGui::EndMenu();
-	ImGui::End();
-
-	ImGui::BeginMainMenuBar();
-	if (ImGui::BeginMenu("Help")) {
-		if (ImGui::MenuItem("Gui Demo")) {
-			showcase = !showcase;
-		}
-		if (ImGui::MenuItem("Documentation")) {
-			
-		}
-		if (ImGui::MenuItem("Download latest")) {
-			
-		}
-		if (ImGui::MenuItem("Report a bug")) {
-			
-		}
-		if (ImGui::MenuItem("About")) {
-			about = !about;
-		}
-		ImGui::EndMenu();
-	}
-	ImGui::EndMainMenuBar();
-
+	ImGuiIO& io = ImGui::GetIO();
+#pragma region UI
+	// About tab
 	if (about) {
 		ImGui::OpenPopup("About");
 		if (ImGui::BeginPopupModal("About", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
@@ -155,7 +95,72 @@ update_status ModuleImGui::Update(float dt)
 		ImGui::ShowDemoWindow();
 	}
 
-#pragma endregion MENU
+	// Close the app menu
+	ImGui::Begin("Quit", NULL, ImGuiWindowFlags_NoCollapse);
+	if (ImGui::Button("Close the app"))
+		return UPDATE_STOP;
+	ImGui::End();
+
+	// Configuration
+	ImGui::Begin("Configuration");
+	ImGui::BeginMainMenuBar();
+	ImGui::EndMainMenuBar();
+	if (ImGui::CollapsingHeader("Application")) {
+
+		//sprintf_s(title, 25, "Framerate %.1f", fps_log[fps_log.size() - 1]);
+		//ImGui::PlotHistogram("##framerate", &fps_logº	
+	}
+	if (ImGui::CollapsingHeader("Window")) {
+		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0))
+			App->window->SetWindowBrightness(v);
+		if (ImGui::Checkbox("Fullscreen", &fullscreen))
+			App->window->SetFullscreen(fullscreen);
+		if (ImGui::Checkbox("Resizable", &resizable))
+			App->window->SetResizable(resizable);
+		if (ImGui::Checkbox("Borderless", &borderless))
+			App->window->SetBorderless(!borderless);
+	}
+	if (ImGui::CollapsingHeader("Renderer")) {
+		if (ImGui::Checkbox("Vsync", &vsync))
+			App->renderer3D->SetVsync(vsync);
+	}
+	if (ImGui::CollapsingHeader("Input")) {
+		if (ImGui::IsMousePosValid())
+			ImGui::Text("Mouse Position: (%.1f,%.1f)", io.MousePos.x, io.MousePos.y);
+		else
+			ImGui::Text("Mouse Position: <invalid>");
+	}
+	if (ImGui::CollapsingHeader("Audio")) {
+		//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
+		//
+		//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
+		//
+	}
+	ImGui::EndMenu();
+	ImGui::End();
+
+	ImGui::BeginMainMenuBar();
+	if (ImGui::BeginMenu("Help")) {
+		if (ImGui::MenuItem("Gui Demo")) {
+			showcase = !showcase;
+		}
+		if (ImGui::MenuItem("Documentation")) {
+
+		}
+		if (ImGui::MenuItem("Download latest")) {
+
+		}
+		if (ImGui::MenuItem("Report a bug")) {
+
+		}
+		if (ImGui::MenuItem("About")) {
+			about = !about;
+		}
+		ImGui::EndMenu();
+	}
+	ImGui::EndMainMenuBar();
+
+#pragma endregion UI
 
 	// Rendering
 	// (Your code clears your framebuffer, renders your other stuff etc.)

@@ -21,6 +21,21 @@ bool ModuleFbx::Init()
 	return ret;
 }
 
+update_status ModuleFbx::PreUpdate(float dt)
+{
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleFbx::Update(float dt) 
+{
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleFbx::PostUpdate(float dt) 
+{
+	return UPDATE_CONTINUE;
+}
+
 bool ModuleFbx::CleanUp()
 {
 	LOG("Init SDL ImGui event system");
