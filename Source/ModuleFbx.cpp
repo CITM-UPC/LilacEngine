@@ -17,6 +17,7 @@ bool ModuleFbx::Init()
 	stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr); 
 	aiAttachLogStream(&stream);
 
+
 	return ret;
 }
 
