@@ -6,6 +6,11 @@
 
 #include <windows.h>
 #include <stdio.h>
+#include <chrono>
+#include <iostream>
+#include <memory>
+#include <mutex>
+#include <thread>
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 
@@ -19,6 +24,7 @@ void log(const char file[], int line, const char* format, ...);
 
 
 typedef unsigned int uint;
+using namespace std::chrono_literals;
 
 enum update_status
 {

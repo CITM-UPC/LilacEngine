@@ -21,6 +21,7 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
+	void LoadFbx(const char* file_path);
 private:
 	struct aiLogStream stream;
 };
