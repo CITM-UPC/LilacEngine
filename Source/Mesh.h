@@ -1,6 +1,6 @@
 #pragma once
 #include "Globals.h"
-//#include "Face.h"
+#include "Texture.h"
 
 struct Mesh {
 	//friend struct Face;
@@ -18,10 +18,13 @@ private:
 
 public:
 	typedef std::shared_ptr <Mesh> Ptr;
-	//Texture2D::Ptr texture_ptr
+	std::shared_ptr <Mesh::Ptr> loadFromFile(const std::string& path);
+
+	Texture::Ptr texture;
 	Mesh(Formats format, const void* vertex_data, uint numVerts, const uint* index_data, uint numIndexs);
+	Mesh(Mesh&& b) noexcept;
 	void draw();
-	std::shared_ptr <Mesh::Ptr>
+	~Mesh();
 
 private:
 	Mesh(const Mesh&);

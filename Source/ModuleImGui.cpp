@@ -52,6 +52,28 @@ update_status ModuleImGui::Update(float dt)
 {
 	ImGuiIO& io = ImGui::GetIO();
 #pragma region UI
+	// Tabs
+	ImGui::BeginMainMenuBar();
+	if (ImGui::BeginMenu("Help")) {
+		if (ImGui::MenuItem("Gui Demo")) {
+			showcase = !showcase;
+		}
+		if (ImGui::MenuItem("Documentation")) {
+
+		}
+		if (ImGui::MenuItem("Download latest")) {
+
+		}
+		if (ImGui::MenuItem("Report a bug")) {
+
+		}
+		if (ImGui::MenuItem("About")) {
+			about = !about;
+		}
+		ImGui::EndMenu();
+	}
+	ImGui::EndMainMenuBar();
+	
 	// About tab
 	if (about) {
 		ImGui::OpenPopup("About");
@@ -139,25 +161,8 @@ update_status ModuleImGui::Update(float dt)
 	ImGui::EndMenu();
 	ImGui::End();
 
+	ImGui::Begin("Hierarchy");
 	ImGui::BeginMainMenuBar();
-	if (ImGui::BeginMenu("Help")) {
-		if (ImGui::MenuItem("Gui Demo")) {
-			showcase = !showcase;
-		}
-		if (ImGui::MenuItem("Documentation")) {
-
-		}
-		if (ImGui::MenuItem("Download latest")) {
-
-		}
-		if (ImGui::MenuItem("Report a bug")) {
-
-		}
-		if (ImGui::MenuItem("About")) {
-			about = !about;
-		}
-		ImGui::EndMenu();
-	}
 	ImGui::EndMainMenuBar();
 
 #pragma endregion UI

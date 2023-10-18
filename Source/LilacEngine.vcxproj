@@ -101,11 +101,11 @@ copy.\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib;$(SolutionDir)vcpkg\packages\imgui_x64-windows\lib;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link\;C:\Users\juliast1\Documents\GitHub\LilacEngine\vcpkg\packages\assimp_x64-windows\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;OpenGL32.lib;imgui.lib;assimp-vc143-mt.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;OpenGL32.lib;imgui.lib;assimp-vc143-mt.lib;glu32.lib;DevIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call $(SolutionDir)vcpkg\bootstrap-vcpkg.bat
-$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 assimp imgui[opengl3-binding,sdl2-binding,docking-experimental] --recurse --triplet x64-windows</Command>
+$(SolutionDir)vcpkg\vcpkg.exe install opengl glew glm devil[libjpeg,libpng] sdl2 assimp imgui[opengl3-binding,sdl2-binding,docking-experimental] --recurse --triplet x64-windows</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)vcpkg\installed\x64-windows\bin\*.* $(OutDir) </Command>
@@ -153,11 +153,11 @@ copy.\vcpkg\installed\x64-windows\bin\"."(OutDir)</Command>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <AdditionalLibraryDirectories>$(SolutionDir)vcpkg\installed\x64-windows\lib;$(SolutionDir)vcpkg\packages\imgui_x64-windows\lib;$(SolutionDir)vcpkg\installed\x64-windows\lib\manual-link\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;OpenGL32.lib;imgui.lib;assimp-vc143-mt.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;OpenGL32.lib;imgui.lib;assimp-vc143-mt.lib;glu32.lib;DevIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>call $(SolutionDir)vcpkg\bootstrap-vcpkg.bat
-$(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 assimp imgui[opengl3-binding,sdl2-binding,docking-experimental] --recurse --triplet x64-windows</Command>
+$(SolutionDir)vcpkg\vcpkg.exe install opengl glew glm devil[libjpeg,libpng] sdl2 assimp imgui[opengl3-binding,sdl2-binding,docking-experimental] --recurse --triplet x64-windows</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)vcpkg\installed\x64-windows\bin\*.* $(OutDir) </Command>
@@ -169,13 +169,14 @@ $(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 assimp imgui[opengl3-bind
     <ClInclude Include="Face.h" />
     <ClInclude Include="glmath.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Graphic.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="ModuleFbx.h" />
     <ClInclude Include="ModuleCamera3D.h" />
     <ClInclude Include="ModuleImGui.h" />
     <ClInclude Include="ModuleRenderer3D.h" />
-    <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="p2List.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -201,7 +202,7 @@ $(SolutionDir)vcpkg\vcpkg.exe install opengl glew sdl2 assimp imgui[opengl3-bind
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRenderer3D.cpp" />
     <ClCompile Include="ModuleSceneIntro.cpp" />
-    <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="PhysBody3D.cpp" />
     <ClCompile Include="Timer.cpp" />

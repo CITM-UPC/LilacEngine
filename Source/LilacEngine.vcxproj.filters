@@ -75,7 +75,7 @@
     <ClInclude Include="ModuleFbx.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleTextures.h">
+    <ClInclude Include="Texture.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
@@ -83,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="Face.h">
       <Filter>Sources\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphic.h">
+      <Filter>Sources\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,7 +134,7 @@
     <ClCompile Include="ModuleFbx.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleTextures.cpp">
+    <ClCompile Include="Texture.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
