@@ -2,6 +2,11 @@
 #include "Application.h"
 #include "PhysBody3D.h"
 #include "ModuleCamera3D.h"
+#include "ModuleImGui.h"
+#include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_opengl3.h"
+#include "SDL2/SDL_opengles2.h"
 
 ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -55,6 +60,10 @@ update_status ModuleCamera3D::Update(float dt)
 
 	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
 	if(App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
+
+	//Keyboard control with ImGui
+	if(ImGui::IsItemFocused()){}
+
 
 	Position += newPos;
 	Reference += newPos;
