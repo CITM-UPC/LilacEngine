@@ -11,6 +11,7 @@
 #include <memory>
 #include <mutex>
 #include <thread>
+#include <shellapi.h>
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 

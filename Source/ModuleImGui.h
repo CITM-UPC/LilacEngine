@@ -16,6 +16,16 @@ public:
 
 	void UI();
 private:
+	//// General
+	float console, configuration, hierarchy, inspector, shapes;
+	
+	//// Console
+
+	//// Configuration
+	// Framegraph
+	char title[25];
+	//float fps_log[];
+	
 	// Booleans to activate menus that are not shown
 	// about -> Information about the engine
 	// showcase -> Imgui Demo window
@@ -28,7 +38,4 @@ private:
 	// Bool to set Vsync
 	bool vsync;
 
-	//
-	char title[25];
-	float fps_log[];
 };

@@ -34,6 +34,12 @@ bool ModuleImGui::Init()
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init();
 	
+	// Debugging purposes
+	console = true;
+	configuration = true;
+	hierarchy = true;
+	inspector = true;
+	shapes = true;
 	return ret;
 }
 
@@ -54,21 +60,29 @@ update_status ModuleImGui::Update(float dt)
 #pragma region UI
 	// Tabs
 	ImGui::BeginMainMenuBar();
-	if (ImGui::BeginMenu("Help")) {
-		if (ImGui::MenuItem("Gui Demo")) {
-			showcase = !showcase;
+	if (ImGui::BeginMenu("General")) {
+		if (ImGui::MenuItem("Editor")) {
+			ImGui::Begin("Configuration");
+			if (ImGui::Checkbox("Console", &fullscreen))
+				console = !console;
+			if (ImGui::Checkbox("Configuration", &fullscreen))
+			configuration = !configuration;
+			if (ImGui::Checkbox("Hierarchy", &fullscreen))
+				hierarchy = !hierarchy;
+			if (ImGui::Checkbox("Inspector", &fullscreen))
+				inspector = !inspector;
+			if (ImGui::Checkbox("Shapes", &fullscreen))
+				shapes = !shapes;
+			//ImGui::EndMenu();
 		}
-		if (ImGui::MenuItem("Documentation")) {
-
-		}
-		if (ImGui::MenuItem("Download latest")) {
-
-		}
-		if (ImGui::MenuItem("Report a bug")) {
-
+		if (ImGui::MenuItem("Github page")) {
+			ShellExecute(0, 0, "https://github.com/CITM-UPC/LilacEngine", 0, 0, SW_SHOW);
 		}
 		if (ImGui::MenuItem("About")) {
 			about = !about;
+		}	
+		if (ImGui::MenuItem("Quit")) {
+			return UPDATE_STOP;
 		}
 		ImGui::EndMenu();
 	}
@@ -113,57 +127,80 @@ update_status ModuleImGui::Update(float dt)
 		}
 	}
 
-	if (showcase) {
-		ImGui::ShowDemoWindow();
+	if (console) {
+		ImGui::Begin("Console");
+		ImGui::EndMenu();
+		ImGui::End();
 	}
-
-	// Close the app menu
-	ImGui::Begin("Quit", NULL, ImGuiWindowFlags_NoCollapse);
-	if (ImGui::Button("Close the app"))
-		return UPDATE_STOP;
-	ImGui::End();
 
 	// Configuration
-	ImGui::Begin("Configuration");
-	ImGui::BeginMainMenuBar();
-	ImGui::EndMainMenuBar();
-	if (ImGui::CollapsingHeader("Application")) {
+	if (configuration) {	
+		ImGui::Begin("Configuration");
+		if (ImGui::CollapsingHeader("Application")) {
 
-		//sprintf_s(title, 25, "Framerate %.1f", fps_log[fps_log.size() - 1]);
-		//ImGui::PlotHistogram("##framerate", &fps_logº	
+			//sprintf_s(title, 25, "Framerate %.1f", fps_log[fps_log.size() - 1]);
+			//ImGui::PlotHistogram("##framerate", &fps_logº	
+		}
+		if (ImGui::CollapsingHeader("Window")) {
+			if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0))
+				App->window->SetWindowBrightness(v);
+			if (ImGui::Checkbox("Fullscreen", &fullscreen))
+				App->window->SetFullscreen(fullscreen);
+			if (ImGui::Checkbox("Resizable", &resizable))
+				App->window->SetResizable(resizable);
+			if (ImGui::Checkbox("Borderless", &borderless))
+				App->window->SetBorderless(!borderless);
+		}
+		if (ImGui::CollapsingHeader("Renderer")) {
+			if (ImGui::Checkbox("Vsync", &vsync))
+				App->renderer3D->SetVsync(vsync);
+		}
+		if (ImGui::CollapsingHeader("Input")) {
+			if (ImGui::IsMousePosValid())
+				ImGui::Text("Mouse Position: (%.1f,%.1f)", io.MousePos.x, io.MousePos.y);
+			else
+				ImGui::Text("Mouse Position: <invalid>");
+		}
+		if (ImGui::CollapsingHeader("Audio")) {
+			ImGui::Text("No audio applied for now!", io.MousePos.x, io.MousePos.y);
+			//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
+			//
+			//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
+			//
+		}
+		if (ImGui::CollapsingHeader("Textures")) {
+			//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
+			//
+			//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
+			//
+		}
+		if (ImGui::CollapsingHeader("Hardware")) {
+			//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
+			//
+			//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
+			//
+		}
+		ImGui::EndMenu();
+		ImGui::End();
 	}
-	if (ImGui::CollapsingHeader("Window")) {
-		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0))
-			App->window->SetWindowBrightness(v);
-		if (ImGui::Checkbox("Fullscreen", &fullscreen))
-			App->window->SetFullscreen(fullscreen);
-		if (ImGui::Checkbox("Resizable", &resizable))
-			App->window->SetResizable(resizable);
-		if (ImGui::Checkbox("Borderless", &borderless))
-			App->window->SetBorderless(!borderless);
+	
+	if (hierarchy) {
+		ImGui::Begin("Hierarchy");
+		ImGui::EndMenu();
+		ImGui::End();
 	}
-	if (ImGui::CollapsingHeader("Renderer")) {
-		if (ImGui::Checkbox("Vsync", &vsync))
-			App->renderer3D->SetVsync(vsync);
+	
+	if (inspector) {
+		ImGui::Begin("Inspector");
+		ImGui::EndMenu();
+		ImGui::End();
 	}
-	if (ImGui::CollapsingHeader("Input")) {
-		if (ImGui::IsMousePosValid())
-			ImGui::Text("Mouse Position: (%.1f,%.1f)", io.MousePos.x, io.MousePos.y);
-		else
-			ImGui::Text("Mouse Position: <invalid>");
-	}
-	if (ImGui::CollapsingHeader("Audio")) {
-		//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
-		//
-		//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
-		//
-	}
-	ImGui::EndMenu();
-	ImGui::End();
 
-	ImGui::Begin("Hierarchy");
-	ImGui::BeginMainMenuBar();
-	ImGui::EndMainMenuBar();
+	if (shapes) {
+		ImGui::Begin("Load");
+		ImGui::EndMenu();
+		ImGui::End();
+	}
 
 #pragma endregion UI
 
