@@ -190,6 +190,27 @@ update_status ModuleImGui::Update(float dt)
 	
 	if (inspector) {
 		ImGui::Begin("Inspector");
+		if (ImGui::TreeNode("Transform")) {
+			ImGui::SeparatorText("Position");
+			ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::SeparatorText("Rotate");
+			ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::SeparatorText("Scale");
+			ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::TreePop();
+		}
+		if (ImGui::TreeNode("Mesh")) {
+			ImGui::TreePop();
+		}
+		if (ImGui::TreeNode("Texture")) {
+			ImGui::TreePop();
+		}
 		ImGui::EndMenu();
 		ImGui::End();
 	}

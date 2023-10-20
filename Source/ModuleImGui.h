@@ -17,7 +17,7 @@ public:
 	void UI();
 private:
 	//// General
-	bool console = false, configuration = false, hierarchy = false, inspector = false, shapes = false;
+	bool console = false, configuration = false, hierarchy = false, inspector = true, shapes = false;
 	
 	//// Console
 
@@ -37,5 +37,12 @@ private:
 
 	// Bool to set Vsync
 	bool vsync;
+
+	//// Hierarchy
+
+	//// Inspector
+	float f = 12.0;
+
+	//// Shapes
 
 };
