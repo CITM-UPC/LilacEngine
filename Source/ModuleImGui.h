@@ -17,7 +17,7 @@ public:
 	void UI();
 private:
 	//// General
-	float console, configuration, hierarchy, inspector, shapes;
+	bool console = false, configuration = false, hierarchy = false, inspector = false, shapes = false;
 	
 	//// Console
 

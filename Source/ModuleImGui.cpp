@@ -34,12 +34,6 @@ bool ModuleImGui::Init()
 	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer3D->context);
 	ImGui_ImplOpenGL3_Init();
 	
-	// Debugging purposes
-	console = true;
-	configuration = true;
-	hierarchy = true;
-	inspector = true;
-	shapes = true;
 	return ret;
 }
 
@@ -58,22 +52,22 @@ update_status ModuleImGui::Update(float dt)
 {
 	ImGuiIO& io = ImGui::GetIO();
 #pragma region UI
+	
 	// Tabs
 	ImGui::BeginMainMenuBar();
 	if (ImGui::BeginMenu("General")) {
-		if (ImGui::MenuItem("Editor")) {
-			ImGui::Begin("Configuration");
-			if (ImGui::Checkbox("Console", &fullscreen))
+		if (ImGui::BeginMenu("Editor")) {
+			if (ImGui::MenuItem("Console"))
 				console = !console;
-			if (ImGui::Checkbox("Configuration", &fullscreen))
+			if (ImGui::MenuItem("Configuration"))
 			configuration = !configuration;
-			if (ImGui::Checkbox("Hierarchy", &fullscreen))
+			if (ImGui::MenuItem("Hierarchy"))
 				hierarchy = !hierarchy;
-			if (ImGui::Checkbox("Inspector", &fullscreen))
+			if (ImGui::MenuItem("Inspector"))
 				inspector = !inspector;
-			if (ImGui::Checkbox("Shapes", &fullscreen))
+			if (ImGui::MenuItem("Shapes"))
 				shapes = !shapes;
-			//ImGui::EndMenu();
+			ImGui::EndMenu();
 		}
 		if (ImGui::MenuItem("Github page")) {
 			ShellExecute(0, 0, "https://github.com/CITM-UPC/LilacEngine", 0, 0, SW_SHOW);
