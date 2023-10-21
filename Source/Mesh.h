@@ -1,14 +1,21 @@
 #pragma once
 #include "Globals.h"
 #include "Texture.h"
+#include <glm/vec2.hpp>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
 
 struct Mesh {
 	//friend struct Face;
 public:
 	enum class Formats { F_V3, F_V3T2, F_V3C4, F_V3CAT2 };
+	struct V3 { glm::dvec3 v; };
+	struct V3C4 { glm::dvec3 v; glm::dvec4 c; };
+	struct V3T2 { glm::dvec3 v; glm::dvec2 t; };
 
 private:
-	Formats _formats;
+	Formats _format;
 	
 	uint _index_buffer_id = 0; // index in VRAM 
 	uint _numIndexs = 0;
