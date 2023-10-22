@@ -114,7 +114,15 @@ update_status ModuleSceneIntro::Update(float dt)
     glVertex3f(1.0f, -1.0f, -1.0f);
     glEnd();
 
+
+//#pragma region Draw Sandbox
+//    static auto mesh_ptrs = Mesh::loadFromFile("BakerHouse.fbx");
+//    for (auto& mesh_ptr : mesh_ptrs) mesh_ptr->draw();
+//#pragma endregion
+
 	return UPDATE_CONTINUE;
+
+
 }
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
