@@ -8,21 +8,21 @@ struct Cube : Graphic
 	static const int NUM_TRIANGLES = NUM_FACES * 2;
 	static const int NUM_VERTEXS = NUM_TRIANGLES * 3;
 
-	const vec3 a;
-	const vec3 b;
-	const vec3 c;
-	const vec3 d;
-	const vec3 e;
-	const vec3 f;
-	const vec3 g;
-	const vec3 h;
+	const glm::dvec3 a;
+	const glm::dvec3 b;
+	const glm::dvec3 c;
+	const glm::dvec3 d;
+	const glm::dvec3 e;
+	const glm::dvec3 f;
+	const glm::dvec3 g;
+	const glm::dvec3 h;
 
-	const vec3 red;
-	const vec3 green;
-	const vec3 blue;
-	const vec3 yellow;
-	const vec3 white;
-	const vec3 black;
+	const glm::dvec3 red;
+	const glm::dvec3 green;
+	const glm::dvec3 blue;
+	const glm::dvec3 yellow;
+	const glm::dvec3 white;
+	const glm::dvec3 black;
 
 	Cube();
 };

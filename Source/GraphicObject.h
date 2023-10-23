@@ -2,11 +2,10 @@
 
 #include "Globals.h"
 #include "Graphic.h"
-#include <glm/ext/matrix_transform.hpp>
 
 class GraphicObject
 {
-	mat4 _transform;
+	glm::dmat4 _transform;
 	std::set<GraphicObject*> _children;
 	GraphicObject* _parent;
 	std::shared_ptr<Graphic> _graphic;
@@ -15,8 +14,8 @@ public:
 	GraphicObject();
 	GraphicObject(std::shared_ptr<Graphic> graphic);
 
-	inline vec3& pos() { return (vec3&)(_transform[3]); }
-	inline void rotate(double rads, const vec3& axis) { _transform = glm::rotate(_transform, rads, axis); }
+	inline glm::dvec3& pos() { return (glm::dvec3&)(_transform[3]); }
+	inline void rotate(double rads, const glm::dvec3& axis) { _transform = glm::rotate(_transform, rads, axis); }
 
 	void paint();
 
