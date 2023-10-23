@@ -14,7 +14,14 @@ public:
 	update_status PostUpdate(float dt);
 	bool CleanUp();
 
-	void UI();
+	void showMenu();
+	void showConsole();
+	void showConfiguration(ImGuiIO& io);
+	void showHierarchy();
+	void showInspector();
+	void showLoad();
+	void showAbout();
+
 private:
 	//// General
 	bool console = false, configuration = false, hierarchy = false, inspector = true, shapes = false;

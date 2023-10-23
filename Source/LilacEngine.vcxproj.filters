@@ -16,8 +16,11 @@
     <Filter Include="Sources\Helpers">
       <UniqueIdentifier>{121f8e6b-df36-4ab0-be0d-601ddfc9e503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\Modules\Game">
-      <UniqueIdentifier>{83f46af7-e02f-40c0-9e56-41d76082527b}</UniqueIdentifier>
+    <Filter Include="Sources\Geometry">
+      <UniqueIdentifier>{efda0784-4615-4994-9c1f-0fdd2b22fe7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\GameObjects">
+      <UniqueIdentifier>{4f0fe68a-4811-42cc-9685-9db11ed2b8b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,9 +63,6 @@
     <ClInclude Include="Light.h">
       <Filter>Sources\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneIntro.h">
-      <Filter>Sources\Modules\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Sources\Tools</Filter>
     </ClInclude>
@@ -75,17 +75,26 @@
     <ClInclude Include="ModuleFbx.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
+    <ClInclude Include="ModuleSceneIntro.h">
       <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Sources\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicObject.h">
+      <Filter>Sources\Geometry</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
-      <Filter>Sources\Helpers</Filter>
+      <Filter>Sources\Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Face.h">
-      <Filter>Sources\Helpers</Filter>
+    <ClInclude Include="GameObject.h">
+      <Filter>Sources\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Graphic.h">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Sources\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +131,6 @@
     <ClCompile Include="Light.cpp">
       <Filter>Sources\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneIntro.cpp">
-      <Filter>Sources\Modules\Game</Filter>
-    </ClCompile>
     <ClCompile Include="PhysBody3D.cpp">
       <Filter>Sources\Helpers</Filter>
     </ClCompile>
@@ -134,14 +140,23 @@
     <ClCompile Include="ModuleFbx.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
+    <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Sources\Helpers</Filter>
+    <ClCompile Include="GraphicObject.cpp">
+      <Filter>Sources\Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="Face.cpp">
-      <Filter>Sources\Helpers</Filter>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Sources\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Sources\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Sources\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Sources\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
