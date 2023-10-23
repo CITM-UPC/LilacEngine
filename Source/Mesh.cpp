@@ -54,15 +54,15 @@ void Mesh::draw() {
         break;
     case Formats::F_V3C4:
         glEnableClientState(GL_COLOR_ARRAY);
-        glVertexPointer(3, GL_FLOAT, sizeof(V3C4), nullptr);
-        glColorPointer(4, GL_FLOAT, sizeof(V3C4), (void*)sizeof(V3));
+        //glVertexPointer(3, GL_FLOAT, sizeof(V3C4), nullptr);
+        //glColorPointer(4, GL_FLOAT, sizeof(V3C4), (void*)sizeof(V3));
         break;
     case Formats::F_V3T2:
         glEnable(GL_TEXTURE_2D);
         if (texture.get()) texture->bind();
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-        glVertexPointer(3, GL_FLOAT, sizeof(V3T2), nullptr);
-        glTexCoordPointer(2, GL_FLOAT, sizeof(V3T2), (void*)sizeof(V3));
+        //glVertexPointer(3, GL_FLOAT, sizeof(V3T2), nullptr);
+        //glTexCoordPointer(2, GL_FLOAT, sizeof(V3T2), (void*)sizeof(V3));
         break;
     }
 

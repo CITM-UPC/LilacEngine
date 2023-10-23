@@ -2,9 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "glmath.h"
-#include "imgui_impl_sdl2.h"
-#include "imgui_impl_opengl3.h"
-#include "SDL2/SDL_opengles2.h"
+
 
 class ModuleImGui : public Module {
 public:
@@ -19,7 +17,7 @@ public:
 
 	void showMenu();
 	void showConsole();
-	void showConfiguration(ImGuiIO& io);
+	void showConfiguration();
 	void showHierarchy();
 	void showInspector();
 	void showLoad();

@@ -3,10 +3,6 @@
 #include "ModuleRenderer3D.h"
 #include "SDL2/SDL_opengl.h"
 
-
-#pragma comment (lib, "glu32.lib")    /* link OpenGL Utility lib     */
-#pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
-
 ModuleRenderer3D::ModuleRenderer3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 }

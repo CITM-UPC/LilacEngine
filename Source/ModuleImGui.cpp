@@ -4,6 +4,9 @@
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
 #include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_opengl3.h"
+#include "SDL2/SDL_opengles2.h"
 
 ModuleImGui::ModuleImGui(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -92,7 +95,7 @@ update_status ModuleImGui::Update(float dt)
 
 	// Configuration
 	if (configuration) {	
-		showConfiguration(io);
+		showConfiguration();
 	}
 	
 	if (hierarchy) {
@@ -140,7 +143,9 @@ void ModuleImGui::showConsole() {
 	ImGui::End();
 }
 
-void ModuleImGui::showConfiguration(ImGuiIO& io) {
+void ModuleImGui::showConfiguration() {
+	ImGuiIO& io = ImGui::GetIO();
+	
 	ImGui::Begin("Configuration");
 	if (ImGui::CollapsingHeader("Application")) {
 

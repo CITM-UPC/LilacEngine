@@ -14,14 +14,15 @@
 #include <shellapi.h>
 #include <set>
 #include <memory>
-#include "GL/glew.h"
-#include "gl/GL.h"
-#include "gl/GLU.h"
-#include "glm/vec2.hpp"
-#include "glm/vec3.hpp"
-#include "glm/vec4.hpp"
-#include "glm/mat4x4.hpp"
-#include "glm/ext/matrix_transform.hpp"
+#include <gl/glew.h>
+#include <gl/glu.h>
+#include <gl/gl.h>
+
+//#include <glm/vec2.hpp>
+//#include <glm/vec3.hpp>
+//#include <glm/vec4.hpp>
+//#include <glm/mat4x4.hpp>
+//#include <glm/ext/matrix_transform.hpp>
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 

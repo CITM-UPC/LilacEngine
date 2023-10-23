@@ -1,7 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
 #include "Texture.h"
-#include <GL/glew.h>
 #include <IL/il.h>
 
 #include <algorithm>
