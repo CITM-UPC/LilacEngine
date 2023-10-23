@@ -1,7 +1,7 @@
 #include "GraphicObject.h"
 
-GraphicObject::GraphicObject() : _transform(glm::identity<mat4>()), _parent(nullptr) {}
-GraphicObject::GraphicObject(std::shared_ptr<Graphic> graphic) : _transform(glm::identity<mat4>()), _parent(nullptr), _graphic(graphic) {}
+GraphicObject::GraphicObject() : _transform(glm::identity<glm::mat4>()), _parent(nullptr) {}
+GraphicObject::GraphicObject(std::shared_ptr<Graphic> graphic) : _transform(glm::identity<glm::mat4>()), _parent(nullptr), _graphic(graphic) {}
 
 void GraphicObject::paint() {
 	glPushMatrix();
