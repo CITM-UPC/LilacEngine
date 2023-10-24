@@ -48,18 +48,18 @@ update_status ModuleCamera3D::Update(float dt)
 
 	vec3 newPos(0,0,0);
 	float speed = 3.0f * dt;
-	if (App->input->GetKey(ImGuiKey_LeftShift) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT)
 		speed = 8.0f * dt;
 
-	if (App->input->GetKey(ImGuiKey_R) == KEY_REPEAT) newPos.y += speed;
-	if (App->input->GetKey(ImGuiKey_F) == KEY_REPEAT) newPos.y -= speed;
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
 
-	if (App->input->GetKey(ImGuiKey_W) == KEY_REPEAT) newPos -= Z * speed;
-	if (App->input->GetKey(ImGuiKey_S) == KEY_REPEAT) newPos += Z * speed;
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
+	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
 
 
-	if (App->input->GetKey(ImGuiKey_A) == KEY_REPEAT) newPos -= X * speed;
-	if (App->input->GetKey(ImGuiKey_D) == KEY_REPEAT) newPos += X * speed;
+	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
+	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
 
 	//Keyboard control with ImGui
 	if (ImGui::IsItemFocused()) {}
@@ -70,7 +70,7 @@ update_status ModuleCamera3D::Update(float dt)
 
 	// Mouse motion ----------------
 
-	if (App->input->GetMouseButton(ImGuiKey_MouseRight) == KEY_REPEAT)
+	if (App->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT)
 	{
 		int dx = -App->input->GetMouseXMotion();
 		int dy = -App->input->GetMouseYMotion();
