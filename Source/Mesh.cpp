@@ -3,10 +3,6 @@
 #include "assimp/cimport.h" 
 #include "assimp/scene.h" 
 #include "assimp/postprocess.h"
-#include <glm/vec2.hpp>
-#include <glm/vec3.hpp>
-#include <glm/vec4.hpp>
-#include <glm/mat4x4.hpp>
 
 //std::vector<Mesh::Ptr> Mesh::loadFromFile(const std::string& path) {
 //
