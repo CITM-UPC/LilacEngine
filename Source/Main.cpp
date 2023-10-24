@@ -7,6 +7,8 @@
 #pragma comment( lib, "SDL2main.lib" )
 #pragma comment( lib, "imgui.lib" )
 #pragma comment (lib, "assimp-vc143-mt.lib")
+#pragma comment (lib, "glu32.lib")    /* link OpenGL Utility lib     */
+#pragma comment (lib, "opengl32.lib") /* link Microsoft OpenGL lib   */
 
 #include "imgui.h"
 #include "imgui_impl_sdl2.h"

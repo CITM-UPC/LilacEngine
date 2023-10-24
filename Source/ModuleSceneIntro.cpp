@@ -2,7 +2,6 @@
 #include "Application.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleRenderer3D.h"
-#include <GL\glew.h>
 //#include "Primitive.h"
 #include "PhysBody3D.h"
 
