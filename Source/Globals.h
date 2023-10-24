@@ -15,8 +15,7 @@
 #include <set>
 #include <memory>
 #include <gl/glew.h>
-#include <gl/glu.h>
-#include <gl/gl.h>
+
 
 //#include <glm/vec2.hpp>
 //#include <glm/vec3.hpp>
