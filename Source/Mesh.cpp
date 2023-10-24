@@ -4,48 +4,6 @@
 #include "assimp/scene.h" 
 #include "assimp/postprocess.h"
 
-//std::vector<Mesh::Ptr> Mesh::loadFromFile(const std::string& path) {
-//
-//    vector<Mesh::Ptr> mesh_ptrs;
-//
-//    auto scene = aiImportFile(path.c_str(), aiProcess_Triangulate | aiProcess_FlipUVs);
-//    for (size_t m = 0; m < scene->mNumMeshes; ++m) {
-//        auto mesh = scene->mMeshes[m];
-//        auto faces = mesh->mFaces;
-//        vec3f* verts = (vec3f*)mesh->mVertices;
-//        vec3f* texCoords = (vec3f*)mesh->mTextureCoords[0];
-//
-//        vector<V3T2> vertex_data;
-//        vector<unsigned int> index_data;
-//
-//        for (size_t i = 0; i < mesh->mNumVertices; ++i) {
-//            V3T2 v = { verts[i], vec2f(texCoords[i].x, texCoords[i].y) };
-//            vertex_data.push_back(v);
-//        }
-//
-//        for (size_t f = 0; f < mesh->mNumFaces; ++f) {
-//            index_data.push_back(faces[f].mIndices[0]);
-//            index_data.push_back(faces[f].mIndices[1]);
-//            index_data.push_back(faces[f].mIndices[2]);
-//        }
-//
-//        auto material = scene->mMaterials[mesh->mMaterialIndex];
-//        aiString aiPath;
-//        material->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
-//        string texPath = aiScene::GetShortFilename(aiPath.C_Str());
-//
-//        auto mesh_ptr = make_shared<Mesh>(Formats::F_V3T2, vertex_data.data(), vertex_data.size(), index_data.data(), index_data.size());
-//        mesh_ptr->texture = make_shared<Texture2D>(texPath);
-//
-//        mesh_ptrs.push_back(mesh_ptr);
-//    }
-//
-//    aiReleaseImport(scene);
-//
-//    return mesh_ptrs;
-//}
-
-
 Mesh::Mesh(Formats format, const void* vertex_data, uint numVerts, const uint* index_data, uint numIndexs)
 {
 	// glGenBuffers(1, &vertex_buffer_id);
