@@ -115,10 +115,10 @@ update_status ModuleSceneIntro::Update(float dt)
     glEnd();
 
 
-#pragma region Draw Sandbox
-    static auto mesh_ptrs = Mesh::loadFromFile("BakerHouse.fbx");
-    for (auto& mesh_ptr : mesh_ptrs) mesh_ptr->draw();
-#pragma endregion
+//#pragma region Draw Sandbox
+//    static auto mesh_ptrs = Mesh::loadFromFile("BakerHouse.fbx");
+//    for (auto& mesh_ptr : mesh_ptrs) mesh_ptr->draw();
+//#pragma endregion
 
 	return UPDATE_CONTINUE;
 
