@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "Graphic.h"
 #include "Texture.h"
+#include <vector>
 
 struct Mesh : public Graphic {
 	//friend struct Face;
