@@ -1,11 +1,11 @@
 #include "GraphicObject.h"
 
-//GraphicObject::GraphicObject() : _transform(glm::identity<glm::mat4>()), _parent(nullptr) {}
-//GraphicObject::GraphicObject(std::shared_ptr<Graphic> graphic) : _transform(glm::identity<glm::mat4>()), _parent(nullptr), _graphic(graphic) {}
+GraphicObject::GraphicObject() : _transform(glm::identity<mat4d>()), _parent(nullptr) {}
+GraphicObject::GraphicObject(std::shared_ptr<Graphic> graphic) : _transform(glm::identity<mat4d>()), _parent(nullptr), _graphic(graphic) {}
 
 void GraphicObject::paint() {
 	glPushMatrix();
-	//glMultMatrixd(&_transform[0].x);
+	glMultMatrixd(&_transform[0].x);
 	if (_graphic.get()) _graphic->draw();
 	for (auto child : _children) child->paint();
 	glPopMatrix();
