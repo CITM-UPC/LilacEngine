@@ -32,7 +32,6 @@ private:
 	p2List<Module*> list_modules;
 
 public:
-
 	Application();
 	~Application();
 
@@ -40,9 +39,22 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	// --- Getters ---
+	const char* GetAppName() const;
+	const char* GetOrganizationName() const;
+	
+	// Setters
+	void SetAppName(const char* name);
+	void SetOrganizationName(const char* name);
+	//void Log(const char* entry);
+	void ClearLogsFromConsole();
 private:
-
 	void AddModule(Module* mod);
 	void PrepareUpdate();
 	void FinishUpdate();
+
+	std::string	appName;
+	std::string	orgName;
+	//std::string	log;
+	std::vector<std::string> logs;
 };

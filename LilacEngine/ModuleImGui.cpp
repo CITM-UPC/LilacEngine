@@ -147,8 +147,8 @@ void ModuleImGui::showConsole() {
 void ModuleImGui::showConfiguration() {
 	ImGuiIO& io = ImGui::GetIO();
 	
-	//ImGui::Begin("Configuration");
-	//if (ImGui::CollapsingHeader("Application")) {
+	ImGui::Begin("Configuration");
+	if (ImGui::CollapsingHeader("Application")) {
 	//	// --- Organization name ---
 	//	static char orgName[100];
 	//	if (App->GetOrganizationName() != nullptr)
@@ -196,48 +196,44 @@ void ModuleImGui::showConfiguration() {
 	//	ImGui::Text("Accumulated Alloc Unit Count: %u", MemoryStats.accumulatedAllocUnitCount);
 	//	ImGui::Text("Total Alloc Unit Count: %u", MemoryStats.totalAllocUnitCount);
 	//	ImGui::Text("Peak Alloc Unit Count: %u", MemoryStats.peakAllocUnitCount);
-	//}
-	//if (ImGui::CollapsingHeader("Window")) {
-	//	if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0))
-	//		App->window->SetWindowBrightness(v);
-	//	if (ImGui::Checkbox("Fullscreen", &fullscreen))
-	//		App->window->SetFullscreen(fullscreen);
-	//	if (ImGui::Checkbox("Resizable", &resizable))
-	//		App->window->SetResizable(resizable);
-	//	if (ImGui::Checkbox("Borderless", &borderless))
-	//		App->window->SetBorderless(!borderless);
-	//}
-	//if (ImGui::CollapsingHeader("Renderer")) {
-	//	if (ImGui::Checkbox("Vsync", &vsync))
-	//		App->renderer3D->SetVsync(vsync);
-	//}
-	//if (ImGui::CollapsingHeader("Input")) {
-	//	if (ImGui::IsMousePosValid())
-	//		ImGui::Text("Mouse Position: (%.1f,%.1f)", io.MousePos.x, io.MousePos.y);
-	//	else
-	//		ImGui::Text("Mouse Position: <invalid>");
-	//	ImGui::Text("Mouse delta: (%g, %g)", io.MouseDelta.x, io.MouseDelta.y);
-	//	ImGui::Text("Mouse wheel: %.1f", io.MouseWheel);
-	//}
-	//if (ImGui::CollapsingHeader("Audio")) {
-	//	ImGui::Text("No audio applied for now!", io.MousePos.x, io.MousePos.y);
-	//	//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
-	//	//
-	//	//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
-	//	//
-	//}
-	//if (ImGui::CollapsingHeader("Textures")) {
-	//	//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
-	//	//
-	//	//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
-	//	//
-	//}
-	//if (ImGui::CollapsingHeader("Hardware")) {
-	//	//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
-	//	//
-	//	//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
-	//	//
-	//}
+	}
+	if (ImGui::CollapsingHeader("Window")) {
+		if (ImGui::SliderFloat("Brightness", &v, 0.0, 1.0))
+			App->window->SetWindowBrightness(v);
+		if (ImGui::Checkbox("Fullscreen", &fullscreen))
+			App->window->SetFullscreen(fullscreen);
+		if (ImGui::Checkbox("Resizable", &resizable))
+			App->window->SetResizable(resizable);
+		if (ImGui::Checkbox("Borderless", &borderless))
+			App->window->SetBorderless(!borderless);
+		if (ImGui::Checkbox("Fullscreen Desktop", &fullDesktop))
+			App->window->SetFullDesktop(!fullDesktop);
+	}
+	if (ImGui::CollapsingHeader("Renderer")) {
+		if (ImGui::Checkbox("Vsync", &vsync))
+			App->renderer3D->SetVsync(vsync);
+	}
+	if (ImGui::CollapsingHeader("Input")) {
+		if (ImGui::IsMousePosValid())
+			ImGui::Text("Mouse Position: (%.1f,%.1f)", io.MousePos.x, io.MousePos.y);
+		else
+			ImGui::Text("Mouse Position: <invalid>");
+		ImGui::Text("Mouse delta: (%g, %g)", io.MouseDelta.x, io.MouseDelta.y);
+		ImGui::Text("Mouse wheel: %.1f", io.MouseWheel);
+	}
+	if (ImGui::CollapsingHeader("Audio")) {
+		ImGui::Text("No audio applied for now!", io.MousePos.x, io.MousePos.y);
+		//if (ImGui::SliderFloat("Music", &v, 0.0, 1.0))
+		//
+		//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
+		//
+	}
+	if (ImGui::CollapsingHeader("Textures")) {
+		
+	}
+	if (ImGui::CollapsingHeader("Hardware")) {
+		
+	}
 	ImGui::EndMenu();
 	ImGui::End();
 }
@@ -251,29 +247,29 @@ void ModuleImGui::showHierarchy() {
 void ModuleImGui::showInspector() {
 	ImGui::Begin("Inspector");
 	//if () {
-	//	if (ImGui::TreeNode("Transform")) {
-	//		ImGui::SeparatorText("Position");
-	//		ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::SeparatorText("Rotate");
-	//		ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::SeparatorText("Scale");
-	//		ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
-	//		ImGui::TreePop();
-	//	}
-	//	if (ImGui::TreeNode("Mesh")) {
-	//		ImGui::TreePop();
-	//	}
-	//	if (ImGui::TreeNode("Texture")) {
-	//		ImGui::TreePop();
-	//	}
-	//	ImGui::EndMenu();
-	//	ImGui::End();
+		if (ImGui::TreeNode("Transform")) {
+			ImGui::SeparatorText("Position");
+			ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::SeparatorText("Rotate");
+			ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::SeparatorText("Scale");
+			ImGui::DragFloat("X", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Y", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::DragFloat("Z", &f, 0.2f, 2.0f, 100.0f, "%.0f");
+			ImGui::TreePop();
+		}
+		if (ImGui::TreeNode("Mesh")) {
+			ImGui::TreePop();
+		}
+		if (ImGui::TreeNode("Texture")) {
+			ImGui::TreePop();
+		}
+		ImGui::EndMenu();
+		ImGui::End();
 	//}
 }
 

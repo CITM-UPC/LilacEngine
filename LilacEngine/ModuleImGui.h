@@ -37,7 +37,7 @@ private:
 	// Booleans to activate menus that are not shown
 	// about -> Information about the engine
 	// showcase -> Imgui Demo window
-	bool about = false, showcase = false;
+	bool about = false;
 
 	// Booleans to change the properties of our window
 	float v = 1.0;

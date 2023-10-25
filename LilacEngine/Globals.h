@@ -14,14 +14,15 @@
 #include <shellapi.h>
 #include <set>
 #include <memory>
+#include <vector>
 #include <gl/glew.h>
 
 
-//#include <glm/vec2.hpp>
-//#include <glm/vec3.hpp>
-//#include <glm/vec4.hpp>
-//#include <glm/mat4x4.hpp>
-//#include <glm/ext/matrix_transform.hpp>
+#include <glm/vec2.hpp>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+#include <glm/ext/matrix_transform.hpp>
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 
@@ -53,14 +54,14 @@ enum update_status
 #define WIN_BORDERLESS false
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC true
-#define TITLE "3D Physics Playground"
+#define TITLE "Lilac Engine"
 
-//// Vectors
-//using vec2 = glm::dvec2;
-//using vec3 = glm::dvec3;
-//using vec4 = glm::dvec4;
-//using mat4 = glm::dmat4;
-//
-//using vec2f = glm::vec2;
-//using vec3f = glm::vec3;
-//using vec4f = glm::vec4;
+// Vectors
+using vec2d = glm::dvec2;
+using vec3d = glm::dvec3;
+using vec4d = glm::dvec4;
+using mat4d = glm::dmat4;
+
+using vec2f = glm::vec2;
+using vec3f = glm::vec3;
+using vec4f = glm::vec4;

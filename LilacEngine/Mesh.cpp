@@ -48,8 +48,8 @@
 
 Mesh::Mesh(Formats format, const void* vertex_data, uint numVerts, const uint* index_data, uint numIndexs)
 {
-	// glGenBuffers(1, &vertex_buffer_id);
-	// glBinBuffer(_vertex_buffer_id);
+	glGenBuffers(1, &_vertex_buffer_id);
+	glBindBuffer(GL_ARRAY_BUFFER, _vertex_buffer_id);
 	switch (_format) {
 	case Formats::F_V3T2:
 		glBufferData(GL_VERTEX_ARRAY, sizeof(double) * 5 * _numVerts, vertex_data, GL_STATIC_DRAW);

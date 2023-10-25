@@ -99,7 +99,7 @@ void ModuleWindow::SetWindowBrightness(float brightness) {
 }
 
 void ModuleWindow::SetFullscreen(bool fullscreen) {
-	SDL_SetWindowFullscreen(window, (SDL_bool)fullscreen);
+	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 }
 
 void ModuleWindow::SetResizable(bool resizable) {
@@ -111,5 +111,5 @@ void ModuleWindow::SetBorderless(bool borderless) {
 }
 
 void ModuleWindow::SetFullDesktop(bool fullDesktop) {
-	//SDL_SetWindowFu
+	SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 }

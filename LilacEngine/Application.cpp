@@ -1,7 +1,10 @@
 #include "Application.h"
+#include "Module.h"
+#include "ModuleWindow.h"
 
 Application::Application()
 {
+	appName = "";
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
 	//audio = new ModuleAudio(this, true);
@@ -130,4 +133,43 @@ bool Application::CleanUp()
 void Application::AddModule(Module* mod)
 {
 	list_modules.add(mod);
+}
+
+const char* Application::GetAppName() const
+{
+	return appName.data();
+}
+
+void Application::SetAppName(const char* name)
+{
+	appName.assign(name);
+	window->SetTitle(appName.data());
+}
+
+void Application::SetOrganizationName(const char* name)
+{
+	orgName = name;
+}
+
+//void Application::Log(const char* entry)
+//{
+//	if (logs.size() > 1000)
+//		logs.erase(logs.begin());
+//
+//	// --- Append all logs to a string so we can print them on console --- 
+//	log.append(entry);
+//
+//	std::string to_add = entry;
+//	logs.push_back(to_add);
+//}
+
+void Application::ClearLogsFromConsole()
+{
+	logs.erase(logs.begin(), logs.end());
+	logs.clear();
+}
+
+const char* Application::GetOrganizationName() const
+{
+	return orgName.data();
 }
