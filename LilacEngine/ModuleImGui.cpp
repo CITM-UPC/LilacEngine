@@ -86,30 +86,20 @@ update_status ModuleImGui::Update(float dt)
 	ImGui::EndMainMenuBar();
 	
 	// About tab
-	if (about) {
+	if (about)
 		showAbout();
-	}
-
-	if (console) {
+	if (console)
 		showConsole();
-	}
-
-	// Configuration
-	if (configuration) {	
+	if (configuration)
 		showConfiguration();
-	}
-	
-	if (hierarchy) {
+	if (hierarchy)
 		showHierarchy();
-	}
-	
-	if (inspector) {
+	if (inspector)
 		showInspector();
-	}
-
-	if (shapes) {
+	if (shapes)
 		showLoad();
-	}
+
+	showGame();
 
 #pragma endregion UI
 
@@ -316,4 +306,19 @@ void ModuleImGui::showAbout() {
 		}
 		ImGui::EndPopup();
 	}
+}
+
+void ModuleImGui::showGame() {
+	ImGui::Begin("GameWindow");
+	{
+		// Using a Child allow to fill all the space of the window.
+		// It also alows customization
+		ImGui::BeginChild("GameRender");
+		// Get the size of the child (i.e. the whole draw size of the windows).
+		ImVec2 wsize = ImGui::GetWindowSize();
+		// Because I use the texture from OpenGL, I need to invert the V from the UV.
+		//ImGui::Image((ImTextureID)tex, wsize, ImVec2(0, 1), ImVec2(1, 0));
+		ImGui::EndChild();
+	}
+	ImGui::End();
 }

@@ -22,10 +22,11 @@ public:
 	void showInspector();
 	void showLoad();
 	void showAbout();
+	void showGame();
 
 private:
 	//// General
-	bool console = false, configuration = false, hierarchy = false, inspector = true, shapes = false;
+	bool console = true, configuration = true, hierarchy = true, inspector = true, shapes = true;
 	
 	//// Console
 

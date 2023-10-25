@@ -15,6 +15,9 @@
 #include <set>
 #include <memory>
 #include <vector>
+#include <array>
+#include <span>
+#include <filesystem>
 #include <gl/glew.h>
 
 
@@ -36,6 +39,9 @@ void log(const char file[], int line, const char* format, ...);
 
 
 typedef unsigned int uint;
+using namespace std;
+using namespace chrono;
+//using namespace filesystem;
 using namespace std::chrono_literals;
 
 enum update_status
