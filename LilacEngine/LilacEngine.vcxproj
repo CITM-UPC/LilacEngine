@@ -179,8 +179,6 @@ $(SolutionDir)vcpkg\vcpkg.exe install opengl glew glm devil[libjpeg,libpng] sdl2
     <ClInclude Include="ModuleCamera3D.h" />
     <ClInclude Include="ModuleImGui.h" />
     <ClInclude Include="ModuleRenderer3D.h" />
-    <ClInclude Include="ModuleTimeManager.h" />
-    <ClInclude Include="PerfTimer.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="p2List.h" />
     <ClInclude Include="Module.h" />
@@ -209,8 +207,6 @@ $(SolutionDir)vcpkg\vcpkg.exe install opengl glew glm devil[libjpeg,libpng] sdl2
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRenderer3D.cpp" />
     <ClCompile Include="ModuleSceneIntro.cpp" />
-    <ClCompile Include="ModuleTimeManager.cpp" />
-    <ClCompile Include="PerfTimer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="PhysBody3D.cpp" />

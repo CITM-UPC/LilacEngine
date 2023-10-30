@@ -13,7 +13,6 @@ Application::Application()
 	camera = new ModuleCamera3D(this);
 	//physics = new ModulePhysics3D(this);
 	imgui = new ModuleImGui(this);
-	time = new ModuleTimeManager(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -23,7 +22,6 @@ Application::Application()
 	AddModule(window);
 	AddModule(camera);
 	AddModule(input);
-	AddModule(time);
 	//AddModule(audio);
 	//AddModule(physics);
 	

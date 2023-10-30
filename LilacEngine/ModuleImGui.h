@@ -23,6 +23,7 @@ public:
 	void showLoad();
 	void showAbout();
 	void showGame();
+	void calculateFramerate();
 
 private:
 	//// General
@@ -33,8 +34,11 @@ private:
 	//// Configuration
 	// Framegraph
 	char title[25];
-	std::vector<float> FPS_Tracker;
-	std::vector<float> MS_Tracker;
+	float frame_rate;
+	float milliseconds;
+
+	std::vector<float> frame_list;
+	std::vector<float> ms_list;
 	
 	// Booleans to activate menus that are not shown
 	// about -> Information about the engine

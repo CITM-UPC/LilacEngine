@@ -18,6 +18,8 @@
 #include <array>
 #include <filesystem>
 #include <span>
+#include <list>
+#include <utility>
 #include <gl/glew.h>
 
 #include <glm/vec2.hpp>

@@ -12,7 +12,6 @@
 #include "ModuleCamera3D.h"
 //#include "ModulePhysics3D.h"
 #include "ModuleImGui.h"
-#include "ModuleTimeManager.h"
 
 class Application
 {
@@ -25,7 +24,6 @@ public:
 	ModuleCamera3D* camera;
 	//ModulePhysics3D* physics;
 	ModuleImGui* imgui;
-	ModuleTimeManager* time;
 
 private:
 
@@ -57,6 +55,7 @@ private:
 
 	std::string	appName;
 	std::string	orgName;
-	//std::string	log;
 	std::vector<std::string> logs;
+
+	float frame_ratef;
 };

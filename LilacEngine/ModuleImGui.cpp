@@ -148,15 +148,15 @@ void ModuleImGui::showConfiguration() {
 
 	//	ImGui::Separator();
 	//	// --- Cap frames ---
-		int maxFramerate = App->time->GetMaxFramerate();
+		//int maxFramerate = App->time->GetMaxFramerate();
 		//if (ImGui::SliderInt("Max FPS", &maxFramerate, 0, App->window->GetDisplayRefreshRate()))
 		//	App->time->SetMaxFramerate(maxFramerate);
 		
 		char title[25];
-		sprintf_s(title, 25, "Framerate %.1f", FPS_Tracker[FPS_Tracker.size() - 1]);
-		ImGui::PlotHistogram("##Framerate", &FPS_Tracker[0], FPS_Tracker.size(), 0, title, 0.0f, 100.0f, ImVec2(500, 75));
-		sprintf_s(title, 25, "Milliseconds %0.1f", MS_Tracker[MS_Tracker.size() - 1]);
-		ImGui::PlotHistogram("##Milliseconds", &MS_Tracker[0], MS_Tracker.size(), 0, title, 0.0f, 40.0f, ImVec2(500, 75));
+		//sprintf_s(title, 25, "Framerate %.1f", FPS_Tracker[FPS_Tracker.size() - 1]);
+		//ImGui::PlotHistogram("##Framerate", &FPS_Tracker[0], FPS_Tracker.size(), 0, title, 0.0f, 100.0f, ImVec2(500, 75));
+		//sprintf_s(title, 25, "Milliseconds %0.1f", MS_Tracker[MS_Tracker.size() - 1]);
+		//ImGui::PlotHistogram("##Milliseconds", &MS_Tracker[0], MS_Tracker.size(), 0, title, 0.0f, 40.0f, ImVec2(500, 75));
 
 	//	sMStats MemoryStats = m_getMemoryStatistics(); // Using mmgr 
 	//	static int speed = 0;
@@ -274,7 +274,7 @@ void ModuleImGui::showAbout() {
 	if (ImGui::BeginPopupModal("About", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
 		ImGui::Text("Lilac Engine");
 		ImGui::Text("An engine in development");
-		ImGui::Text(u8"by Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
+		ImGui::Text("by Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
 		ImGui::Text("3rd Party Libraries used:");
 		// Need to change this
 		ImGui::Text("- SDL 2");
@@ -282,7 +282,7 @@ void ModuleImGui::showAbout() {
 		ImGui::Text("License:\n\n");
 		ImGui::Text("MIT License\n\n");
 		// 1st Paragraph
-		ImGui::Text(u8"Copyright (c) 2023 Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
+		ImGui::Text("Copyright (c) 2023 Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
 		ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy\n");
 		ImGui::Text("of this software and associated documentation files (\"the Software\"), to deal\n");
 		ImGui::Text("in the Software without restriction, including without limitation the rights\n");
@@ -321,4 +321,22 @@ void ModuleImGui::showGame() {
 		ImGui::EndChild();
 	}
 	ImGui::End();
+}
+
+void ModuleImGui::calculateFramerate() {
+	//frame_rate = 1.0f / App->Gengine->frame_ratef * 1000000000;
+	//
+	//milliseconds = App->Gengine->frame_ratef * 0.000001f;
+	//
+	//frame_list.push_back(frame_rate);
+	//if (frame_list.size() > 100)
+	//{
+	//	frame_list.erase(frame_list.begin());
+	//}
+	//
+	//ms_list.push_back(milliseconds);
+	//if (ms_list.size() > 100)
+	//{
+	//	ms_list.erase(ms_list.begin());
+	//}
 }
