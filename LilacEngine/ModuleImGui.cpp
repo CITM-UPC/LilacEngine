@@ -148,15 +148,15 @@ void ModuleImGui::showConfiguration() {
 
 	//	ImGui::Separator();
 	//	// --- Cap frames ---
-	//	int maxFramerate = App->time->GetMaxFramerate();
-	//	if (ImGui::SliderInt("Max FPS", &maxFramerate, 0, App->window->GetDisplayRefreshRate()))
-	//		App->time->SetMaxFramerate(maxFramerate);
-	//	
-	//	char title[25];
-	//	sprintf_s(title, 25, "Framerate %.1f", FPS_Tracker[FPS_Tracker.size() - 1]);
-	//	ImGui::PlotHistogram("##Framerate", &FPS_Tracker[0], FPS_Tracker.size(), 0, title, 0.0f, 100.0f, ImVec2(500, 75));
-	//	sprintf_s(title, 25, "Milliseconds %0.1f", MS_Tracker[MS_Tracker.size() - 1]);
-	//	ImGui::PlotHistogram("##Milliseconds", &MS_Tracker[0], MS_Tracker.size(), 0, title, 0.0f, 40.0f, ImVec2(500, 75));
+		int maxFramerate = App->time->GetMaxFramerate();
+		if (ImGui::SliderInt("Max FPS", &maxFramerate, 0, App->window->GetDisplayRefreshRate()))
+			App->time->SetMaxFramerate(maxFramerate);
+		
+		char title[25];
+		sprintf_s(title, 25, "Framerate %.1f", FPS_Tracker[FPS_Tracker.size() - 1]);
+		ImGui::PlotHistogram("##Framerate", &FPS_Tracker[0], FPS_Tracker.size(), 0, title, 0.0f, 100.0f, ImVec2(500, 75));
+		sprintf_s(title, 25, "Milliseconds %0.1f", MS_Tracker[MS_Tracker.size() - 1]);
+		ImGui::PlotHistogram("##Milliseconds", &MS_Tracker[0], MS_Tracker.size(), 0, title, 0.0f, 40.0f, ImVec2(500, 75));
 
 	//	sMStats MemoryStats = m_getMemoryStatistics(); // Using mmgr 
 	//	static int speed = 0;

@@ -16,10 +16,8 @@
 #include <memory>
 #include <vector>
 #include <array>
-#include <span>
 #include <filesystem>
 #include <gl/glew.h>
-
 
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>

@@ -4,7 +4,19 @@
 #include "assimp/scene.h" 
 #include "assimp/postprocess.h"
 
-//namespace fs = std::experimental::filesystem;
+#include <span>
+namespace fs = std::filesystem;
+
+struct aiMeshExt : aiMesh {
+    auto verts() const { return span((vec3f*)mVertices, mNumVertices); }
+    auto texCoords() const { return span((vec3f*)mTextureCoords[0], mNumVertices); }
+    auto faces() const { return span(mFaces, mNumFaces); }
+};
+
+struct aiSceneExt : aiScene {
+    auto materials() const { return span(mMaterials, mNumMaterials); }
+    auto meshes() const { return span((aiMeshExt**)mMeshes, mNumMeshes); }
+};
 
 Mesh::Mesh(Formats format, const void* vertex_data, uint numVerts, const uint* index_data, uint numIndexs)
 {
