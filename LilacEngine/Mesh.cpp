@@ -4,8 +4,6 @@
 #include "assimp/scene.h" 
 #include "assimp/postprocess.h"
 
-#include <span>
-namespace fs = std::filesystem;
 
 struct aiMeshExt : aiMesh {
     auto verts() const { return span((vec3f*)mVertices, mNumVertices); }

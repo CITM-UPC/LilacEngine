@@ -149,8 +149,8 @@ void ModuleImGui::showConfiguration() {
 	//	ImGui::Separator();
 	//	// --- Cap frames ---
 		int maxFramerate = App->time->GetMaxFramerate();
-		if (ImGui::SliderInt("Max FPS", &maxFramerate, 0, App->window->GetDisplayRefreshRate()))
-			App->time->SetMaxFramerate(maxFramerate);
+		//if (ImGui::SliderInt("Max FPS", &maxFramerate, 0, App->window->GetDisplayRefreshRate()))
+		//	App->time->SetMaxFramerate(maxFramerate);
 		
 		char title[25];
 		sprintf_s(title, 25, "Framerate %.1f", FPS_Tracker[FPS_Tracker.size() - 1]);

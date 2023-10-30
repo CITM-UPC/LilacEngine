@@ -17,6 +17,7 @@
 #include <vector>
 #include <array>
 #include <filesystem>
+#include <span>
 #include <gl/glew.h>
 
 #include <glm/vec2.hpp>
@@ -39,7 +40,7 @@ void log(const char file[], int line, const char* format, ...);
 typedef unsigned int uint;
 using namespace std;
 using namespace chrono;
-//using namespace filesystem;
+namespace fs = std::filesystem;
 using namespace std::chrono_literals;
 
 enum update_status

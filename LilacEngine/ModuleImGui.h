@@ -33,7 +33,8 @@ private:
 	//// Configuration
 	// Framegraph
 	char title[25];
-	//float fps_log[];
+	std::vector<float> FPS_Tracker;
+	std::vector<float> MS_Tracker;
 	
 	// Booleans to activate menus that are not shown
 	// about -> Information about the engine

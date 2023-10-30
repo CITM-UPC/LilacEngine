@@ -10,9 +10,8 @@
 
 ModuleTimeManager::ModuleTimeManager(bool start_enabled) : Module(start_enabled)
 {
-	CONSOLE_LOG("Initializing Time Manager");
+	//CONSOLE_LOG("Initializing Time Manager");
 
-	name = "TimeManager";
 	Realtime_clock.Start();
 	Gametime_clock.Start();
 
@@ -32,59 +31,59 @@ void ModuleTimeManager::PrepareUpdate()
 
 	time += realtime_dt * Time_scale;
 
-	switch (App->GetAppState())
-	{
-	case AppState::TO_PLAY:
-		App->GetAppState() = AppState::PLAY;
-
-		// --- Create temporal directory/scene ---
-		App->fs->CreateDirectoryA("Temp");
-		App->scene_manager->currentScene->CopyInto(App->scene_manager->temporalScene);
-		App->scene_manager->SaveScene(App->scene_manager->temporalScene);
-
-		CONSOLE_LOG("APP STATE PLAY");
-		break;
-
-	case AppState::PLAY:
-		game_dt *= Time_scale;
-		break;
-
-	case AppState::TO_PAUSE:
-		App->GetAppState() = AppState::PAUSE;
-		CONSOLE_LOG("APP STATE PAUSE");
-
-		break;
-
-	case AppState::PAUSE:
-		time -= realtime_dt;
-		game_dt = 0.0f;
-		break;
-
-	case AppState::TO_EDITOR:
-		App->scene_manager->SetActiveScene(App->scene_manager->currentScene);
-
-		// --- Clear temporal scene, eliminate temporal files/directory ---
-		App->scene_manager->temporalScene->NoStaticGameObjects.clear();
-		App->scene_manager->temporalScene->StaticGameObjects.clear();
-		App->fs->Remove(App->scene_manager->temporalScene->GetResourceFile());
-		App->fs->Remove(std::string(App->scene_manager->temporalScene->GetResourceFile()).append(".meta").c_str());
-		App->fs->Remove("Temp/");
-
-		App->GetAppState() = AppState::EDITOR;
-		CONSOLE_LOG("APP STATE EDITOR");
-		break;
-
-	case AppState::EDITOR:
-		time = 0.0f;
-		game_dt = 0.0f;
-		break;
-
-	case AppState::STEP:
-		CONSOLE_LOG("APP STATE STEP");
-		App->GetAppState() = AppState::PAUSE;
-		break;
-
-	}
+	//switch (App->GetAppState())
+	//{
+	//case AppState::TO_PLAY:
+	//	App->GetAppState() = AppState::PLAY;
+	//
+	//	// --- Create temporal directory/scene ---
+	//	App->fs->CreateDirectoryA("Temp");
+	//	App->scene_manager->currentScene->CopyInto(App->scene_manager->temporalScene);
+	//	App->scene_manager->SaveScene(App->scene_manager->temporalScene);
+	//
+	//	CONSOLE_LOG("APP STATE PLAY");
+	//	break;
+	//
+	//case AppState::PLAY:
+	//	game_dt *= Time_scale;
+	//	break;
+	//
+	//case AppState::TO_PAUSE:
+	//	App->GetAppState() = AppState::PAUSE;
+	//	CONSOLE_LOG("APP STATE PAUSE");
+	//
+	//	break;
+	//
+	//case AppState::PAUSE:
+	//	time -= realtime_dt;
+	//	game_dt = 0.0f;
+	//	break;
+	//
+	//case AppState::TO_EDITOR:
+	//	App->scene_manager->SetActiveScene(App->scene_manager->currentScene);
+	//
+	//	// --- Clear temporal scene, eliminate temporal files/directory ---
+	//	App->scene_manager->temporalScene->NoStaticGameObjects.clear();
+	//	App->scene_manager->temporalScene->StaticGameObjects.clear();
+	//	App->fs->Remove(App->scene_manager->temporalScene->GetResourceFile());
+	//	App->fs->Remove(std::string(App->scene_manager->temporalScene->GetResourceFile()).append(".meta").c_str());
+	//	App->fs->Remove("Temp/");
+	//
+	//	App->GetAppState() = AppState::EDITOR;
+	//	CONSOLE_LOG("APP STATE EDITOR");
+	//	break;
+	//
+	//case AppState::EDITOR:
+	//	time = 0.0f;
+	//	game_dt = 0.0f;
+	//	break;
+	//
+	//case AppState::STEP:
+	//	CONSOLE_LOG("APP STATE STEP");
+	//	App->GetAppState() = AppState::PAUSE;
+	//	break;
+	//
+	//}
 }
 
 void ModuleTimeManager::FinishUpdate()
