@@ -20,6 +20,7 @@
 #include <span>
 #include <list>
 #include <utility>
+#include <algorithm>
 #include <gl/glew.h>
 
 #include <glm/vec2.hpp>
@@ -27,6 +28,7 @@
 #include <glm/vec4.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <IL/il.h>
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 

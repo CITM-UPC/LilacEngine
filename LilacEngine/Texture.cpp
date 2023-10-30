@@ -1,9 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
 #include "Texture.h"
-#include <IL/il.h>
-
-#include <algorithm>
 
 using namespace std;
 
