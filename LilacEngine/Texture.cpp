@@ -2,8 +2,6 @@
 #include "Application.h"
 #include "Texture.h"
 
-using namespace std;
-
 Texture::Texture(const std::string& path) {
 
     //load image data using devil
