@@ -4,6 +4,8 @@
 #include "ModuleRenderer3D.h"
 //#include "Primitive.h"
 #include "PhysBody3D.h"
+#include "Mesh.h"
+#include "GraphicObject.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -21,6 +23,7 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
+    ilInit();
 	return ret;
 }
 
@@ -38,80 +41,96 @@ update_status ModuleSceneIntro::Update(float dt)
     App->renderer3D->DrawAxis();
     App->renderer3D->DrawGrid(100, 1);
     
-    glRotated(0, 0, 1.0, 0);
+    //glRotated(0, 0, 1.0, 0);
+    //
+    //glBegin(GL_LINES);
+    //glColor3f(255, 0, 0);
+    //
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //
+    //glEnd();
+    ////part 2:
+    //glBegin(GL_QUADS);
+    //glColor3f(0.0f, 0.0f, 1.0f);
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //
+    //glColor3f(0.0f, 1.0f, 0.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //
+    //glColor3f(1.0f, 0.0f, 0.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //
+    //glColor3f(0.0f, 0.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //
+    //glColor3f(1.0f, 0.0f, 0.0f);
+    //glVertex3f(-1.0f, 1.0f, 1.0f);
+    //glVertex3f(-1.0f, 1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, -1.0f);
+    //glVertex3f(-1.0f, -1.0f, 1.0f);
+    //
+    //glColor3f(0.0f, 1.0f, 0.0f);
+    //glVertex3f(1.0f, 1.0f, -1.0f);
+    //glVertex3f(1.0f, 1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, 1.0f);
+    //glVertex3f(1.0f, -1.0f, -1.0f);
+    //glEnd();
 
-    glBegin(GL_LINES);
-    glColor3f(255, 0, 0);
+    static auto mesh_ptrs = Mesh::loadFromFile("Assets/BakerHouse.fbx");
+    GraphicObject mesh1(mesh_ptrs.front());
+    GraphicObject mesh2(mesh_ptrs.back());
+    
+    GraphicObject house;
+    
+    house.addChild(std::move(mesh1));
+    house.addChild(std::move(mesh2));
+    
+    GraphicObject root;
+    root.addChild(std::move(house));
+    
+    root.paint();
+    assert(glGetError() == GL_NONE);
 
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
-
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
-
-    glEnd();
-    //part 2:
-    glBegin(GL_QUADS);
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
-
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
-    glEnd();
 
 	return UPDATE_CONTINUE;
 }

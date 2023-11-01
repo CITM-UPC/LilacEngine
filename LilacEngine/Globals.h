@@ -15,14 +15,20 @@
 #include <set>
 #include <memory>
 #include <vector>
+#include <array>
+#include <filesystem>
+#include <span>
+#include <list>
+#include <utility>
+#include <algorithm>
 #include <gl/glew.h>
-
 
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <IL/il.h>
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 
@@ -36,6 +42,9 @@ void log(const char file[], int line, const char* format, ...);
 
 
 typedef unsigned int uint;
+using namespace std;
+using namespace chrono;
+namespace fs = std::filesystem;
 using namespace std::chrono_literals;
 
 enum update_status

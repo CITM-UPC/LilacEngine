@@ -2,7 +2,6 @@
 #include "Globals.h"
 #include "Graphic.h"
 #include "Texture.h"
-#include <vector>
 
 struct Mesh : public Graphic {
 	//friend struct Face;
@@ -23,7 +22,7 @@ private:
 
 public:
 	typedef std::shared_ptr <Mesh> Ptr;
-	std::shared_ptr <Mesh::Ptr> loadFromFile(const std::string& path);
+	static std::vector <Mesh::Ptr> loadFromFile(const std::string& path);
 
 	Texture::Ptr texture;
 	Mesh(Formats format, const void* vertex_data, uint numVerts, const uint* index_data, uint numIndexs);

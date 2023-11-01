@@ -86,30 +86,20 @@ update_status ModuleImGui::Update(float dt)
 	ImGui::EndMainMenuBar();
 	
 	// About tab
-	if (about) {
+	if (about)
 		showAbout();
-	}
-
-	if (console) {
+	if (console)
 		showConsole();
-	}
-
-	// Configuration
-	if (configuration) {	
+	if (configuration)
 		showConfiguration();
-	}
-	
-	if (hierarchy) {
+	if (hierarchy)
 		showHierarchy();
-	}
-	
-	if (inspector) {
+	if (inspector)
 		showInspector();
-	}
-
-	if (shapes) {
+	if (shapes)
 		showLoad();
-	}
+
+	showGame();
 
 #pragma endregion UI
 
@@ -158,15 +148,15 @@ void ModuleImGui::showConfiguration() {
 
 	//	ImGui::Separator();
 	//	// --- Cap frames ---
-	//	int maxFramerate = App->time->GetMaxFramerate();
-	//	if (ImGui::SliderInt("Max FPS", &maxFramerate, 0, App->window->GetDisplayRefreshRate()))
-	//		App->time->SetMaxFramerate(maxFramerate);
-	//	
-	//	char title[25];
-	//	sprintf_s(title, 25, "Framerate %.1f", FPS_Tracker[FPS_Tracker.size() - 1]);
-	//	ImGui::PlotHistogram("##Framerate", &FPS_Tracker[0], FPS_Tracker.size(), 0, title, 0.0f, 100.0f, ImVec2(500, 75));
-	//	sprintf_s(title, 25, "Milliseconds %0.1f", MS_Tracker[MS_Tracker.size() - 1]);
-	//	ImGui::PlotHistogram("##Milliseconds", &MS_Tracker[0], MS_Tracker.size(), 0, title, 0.0f, 40.0f, ImVec2(500, 75));
+		//int maxFramerate = App->time->GetMaxFramerate();
+		//if (ImGui::SliderInt("Max FPS", &maxFramerate, 0, App->window->GetDisplayRefreshRate()))
+		//	App->time->SetMaxFramerate(maxFramerate);
+		
+		char title[25];
+		//sprintf_s(title, 25, "Framerate %.1f", FPS_Tracker[FPS_Tracker.size() - 1]);
+		//ImGui::PlotHistogram("##Framerate", &FPS_Tracker[0], FPS_Tracker.size(), 0, title, 0.0f, 100.0f, ImVec2(500, 75));
+		//sprintf_s(title, 25, "Milliseconds %0.1f", MS_Tracker[MS_Tracker.size() - 1]);
+		//ImGui::PlotHistogram("##Milliseconds", &MS_Tracker[0], MS_Tracker.size(), 0, title, 0.0f, 40.0f, ImVec2(500, 75));
 
 	//	sMStats MemoryStats = m_getMemoryStatistics(); // Using mmgr 
 	//	static int speed = 0;
@@ -284,7 +274,7 @@ void ModuleImGui::showAbout() {
 	if (ImGui::BeginPopupModal("About", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
 		ImGui::Text("Lilac Engine");
 		ImGui::Text("An engine in development");
-		ImGui::Text(u8"by Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
+		ImGui::Text("by Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
 		ImGui::Text("3rd Party Libraries used:");
 		// Need to change this
 		ImGui::Text("- SDL 2");
@@ -292,7 +282,7 @@ void ModuleImGui::showAbout() {
 		ImGui::Text("License:\n\n");
 		ImGui::Text("MIT License\n\n");
 		// 1st Paragraph
-		ImGui::Text(u8"Copyright (c) 2023 Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
+		ImGui::Text("Copyright (c) 2023 Júlia Serra Trujillo and Joel Chaves Moreno\n\n");
 		ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy\n");
 		ImGui::Text("of this software and associated documentation files (\"the Software\"), to deal\n");
 		ImGui::Text("in the Software without restriction, including without limitation the rights\n");
@@ -316,4 +306,37 @@ void ModuleImGui::showAbout() {
 		}
 		ImGui::EndPopup();
 	}
+}
+
+void ModuleImGui::showGame() {
+	ImGui::Begin("GameWindow");
+	{
+		// Using a Child allow to fill all the space of the window.
+		// It also alows customization
+		ImGui::BeginChild("GameRender");
+		// Get the size of the child (i.e. the whole draw size of the windows).
+		ImVec2 wsize = ImGui::GetWindowSize();
+		// Because I use the texture from OpenGL, I need to invert the V from the UV.
+		//ImGui::Image((ImTextureID)tex, wsize, ImVec2(0, 1), ImVec2(1, 0));
+		ImGui::EndChild();
+	}
+	ImGui::End();
+}
+
+void ModuleImGui::calculateFramerate() {
+	//frame_rate = 1.0f / App->Gengine->frame_ratef * 1000000000;
+	//
+	//milliseconds = App->Gengine->frame_ratef * 0.000001f;
+	//
+	//frame_list.push_back(frame_rate);
+	//if (frame_list.size() > 100)
+	//{
+	//	frame_list.erase(frame_list.begin());
+	//}
+	//
+	//ms_list.push_back(milliseconds);
+	//if (ms_list.size() > 100)
+	//{
+	//	ms_list.erase(ms_list.begin());
+	//}
 }

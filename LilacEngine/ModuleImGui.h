@@ -22,17 +22,23 @@ public:
 	void showInspector();
 	void showLoad();
 	void showAbout();
+	void showGame();
+	void calculateFramerate();
 
 private:
 	//// General
-	bool console = false, configuration = false, hierarchy = false, inspector = true, shapes = false;
+	bool console = true, configuration = true, hierarchy = true, inspector = true, shapes = true;
 	
 	//// Console
 
 	//// Configuration
 	// Framegraph
 	char title[25];
-	//float fps_log[];
+	float frame_rate;
+	float milliseconds;
+
+	std::vector<float> frame_list;
+	std::vector<float> ms_list;
 	
 	// Booleans to activate menus that are not shown
 	// about -> Information about the engine

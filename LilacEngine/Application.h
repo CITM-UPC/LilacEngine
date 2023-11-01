@@ -55,6 +55,7 @@ private:
 
 	std::string	appName;
 	std::string	orgName;
-	//std::string	log;
 	std::vector<std::string> logs;
+
+	float frame_ratef;
 };
