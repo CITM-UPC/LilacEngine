@@ -18,6 +18,9 @@ public:
 	void Move(const vec3 &Movement);
 	float* GetViewMatrix();
 
+	/*void CameraZoomIn();
+	void CameraZoomOut();*/
+
 private:
 
 	void CalculateViewMatrix();

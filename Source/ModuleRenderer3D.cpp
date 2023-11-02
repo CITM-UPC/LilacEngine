@@ -91,6 +91,35 @@ bool ModuleRenderer3D::Init()
 		glEnable(GL_COLOR_MATERIAL);
 	}
 
+	/*void ModuleRenderer3D::CameraZoomIn()
+	{
+		vec3 normalizedVec = glm::normalize(App->game_engine->camera.focusPosVec - App->game_engine->camera.worldPosVec);
+
+		App->game_engine->camera.worldPosVec.x += App->game_engine->camera.zoomSpeed * normalizedVec.x;
+		App->game_engine->camera.worldPosVec.y += App->game_engine->camera.zoomSpeed * normalizedVec.y;
+		App->game_engine->camera.worldPosVec.z += App->game_engine->camera.zoomSpeed * normalizedVec.z;
+
+		App->game_engine->camera.focusPosVec.x += App->game_engine->camera.zoomSpeed * normalizedVec.x;
+		App->game_engine->camera.focusPosVec.y += App->game_engine->camera.zoomSpeed * normalizedVec.y;
+		App->game_engine->camera.focusPosVec.z += App->game_engine->camera.zoomSpeed * normalizedVec.z;
+
+	}
+
+	void ModuleRenderer3D::CameraZoomOut()
+	{
+		vec3 normalizedVec = glm::normalize(App->game_engine->camera.focusPosVec - App->game_engine->camera.worldPosVec);
+
+		App->game_engine->camera.worldPosVec.x -= App->game_engine->camera.zoomSpeed * normalizedVec.x;
+		App->game_engine->camera.worldPosVec.y -= App->game_engine->camera.zoomSpeed * normalizedVec.y;
+		App->game_engine->camera.worldPosVec.z -= App->game_engine->camera.zoomSpeed * normalizedVec.z;
+
+		App->game_engine->camera.focusPosVec.x -= App->game_engine->camera.zoomSpeed * normalizedVec.x;
+		App->game_engine->camera.focusPosVec.y -= App->game_engine->camera.zoomSpeed * normalizedVec.y;
+		App->game_engine->camera.focusPosVec.z -= App->game_engine->camera.zoomSpeed * normalizedVec.z;
+
+	}*/
+
+
 	// Projection matrix for
 	OnResize(SCREEN_WIDTH, SCREEN_HEIGHT);
 

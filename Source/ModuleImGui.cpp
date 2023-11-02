@@ -254,6 +254,12 @@ void ModuleImGui::showConfiguration() {
 		ImGui::SameLine();
 		ImGui::TextColored(ImVec4(1, 1, 0, 0.75), "%s", gpuVendor);
 
+		/*RAM Info*/
+		ImGui::Text("System RAM: ");
+		ImGui::SameLine();
+		float systemRAM = (SDL_GetSystemRAM() / 1000);	// Get system RAM (in gb)
+		ImGui::TextColored(ImVec4(1, 1, 0, 0.75), "%.2f GB", systemRAM);
+
 
 	}
 	ImGui::EndMenu();

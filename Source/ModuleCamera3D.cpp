@@ -7,6 +7,7 @@
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
 #include "SDL2/SDL_opengl.h"
+#include "ModuleRenderer3D.h"
 
 ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -18,6 +19,8 @@ ModuleCamera3D::ModuleCamera3D(Application* app, bool start_enabled) : Module(ap
 
 	Position = vec3(0.0f, 0.0f, 5.0f);
 	Reference = vec3(0.0f, 0.0f, 0.0f);
+
+	
 }
 
 ModuleCamera3D::~ModuleCamera3D()
@@ -67,26 +70,18 @@ update_status ModuleCamera3D::Update(float dt)
 	int scrollValue = 0;
 
 	
-	//SDL_Event e;
-	//while (SDL_PollEvent(&e) != 0) {
-	//	 if (e.type == SDL_MOUSEWHEEL) {
-	//		if (e.wheel.y > 0) {
-	//			// Mousewheel scrolled up, move forwards
-	//			newPos -= Z * speed;
-	//		}
-	//		else if (e.wheel.y < 0) {
-	//			// Mousewheel scrolled down, move backwards
-	//			newPos += Z * speed;
-	//		}
-	//	 }
-	//}
-	
-	//Keyboard control with ImGui
-	if (ImGui::IsItemFocused()) {}
+	SDL_Event e;
+		if (e.wheel.y > 0) {
+			// Mousewheel scrolled up, move forwards
+			newPos -= Z * speed;
+		}
+		else if (e.wheel.y < 0) {
+			// Mousewheel scrolled down, move backwards
+			newPos += Z * speed;
+		}
 
-
-	Position += newPos;
-	Reference += newPos;
+	/*Position += newPos;
+	Reference += newPos;*/
 
 	// Mouse motion ----------------
 

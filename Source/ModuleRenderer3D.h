@@ -23,6 +23,9 @@ public:
 	void DrawAxis();
 	void DrawGrid(int grid_size, int grid_step);
 
+	void CameraZoomIn();
+	void CameraZoomOut();
+
 public:
 
 	Light lights[MAX_LIGHTS];
