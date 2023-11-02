@@ -116,19 +116,19 @@ update_status ModuleSceneIntro::Update(float dt)
     //glVertex3f(1.0f, -1.0f, -1.0f);
     //glEnd();
 
-    static auto mesh_ptrs = Mesh::loadFromFile("Assets/BakerHouse.fbx");
-    GraphicObject mesh1(mesh_ptrs.front());
-    GraphicObject mesh2(mesh_ptrs.back());
-    
-    GraphicObject house;
-    
-    house.addChild(std::move(mesh1));
-    house.addChild(std::move(mesh2));
-    
-    GraphicObject root;
-    root.addChild(std::move(house));
-    
-    root.paint();
+    //static auto mesh_ptrs = Mesh::loadFromFile("Assets/BakerHouse.fbx");
+    //GraphicObject mesh1(mesh_ptrs.front());
+    //GraphicObject mesh2(mesh_ptrs.back());
+    //
+    //GraphicObject house;
+    //
+    //house.addChild(std::move(mesh1));
+    //house.addChild(std::move(mesh2));
+    //
+    //GraphicObject root;
+    //root.addChild(std::move(house));
+    //
+    //root.paint();
     assert(glGetError() == GL_NONE);
 
 
