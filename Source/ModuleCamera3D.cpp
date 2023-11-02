@@ -67,19 +67,19 @@ update_status ModuleCamera3D::Update(float dt)
 	int scrollValue = 0;
 
 	
-	SDL_Event e;
-	while (SDL_PollEvent(&e) != 0) {
-		 if (e.type == SDL_MOUSEWHEEL) {
-			if (e.wheel.y > 0) {
-				// Mousewheel scrolled up, move forwards
-				newPos -= Z * speed;
-			}
-			else if (e.wheel.y < 0) {
-				// Mousewheel scrolled down, move backwards
-				newPos += Z * speed;
-			}
-		 }
-	}
+	//SDL_Event e;
+	//while (SDL_PollEvent(&e) != 0) {
+	//	 if (e.type == SDL_MOUSEWHEEL) {
+	//		if (e.wheel.y > 0) {
+	//			// Mousewheel scrolled up, move forwards
+	//			newPos -= Z * speed;
+	//		}
+	//		else if (e.wheel.y < 0) {
+	//			// Mousewheel scrolled down, move backwards
+	//			newPos += Z * speed;
+	//		}
+	//	 }
+	//}
 	
 	//Keyboard control with ImGui
 	if (ImGui::IsItemFocused()) {}

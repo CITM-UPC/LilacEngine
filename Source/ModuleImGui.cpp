@@ -237,6 +237,24 @@ void ModuleImGui::showConfiguration() {
 		//
 		//if (ImGui::SliderFloat("Fx", &v, 0.0, 1.0))
 		//
+
+		/* CPU */
+			// Display System's CPU cores
+		ImGui::Text("CPUs: ");
+		ImGui::SameLine();
+
+		/* GPU Info */
+		const GLubyte* gpuName = glGetString(GL_RENDERER);
+		ImGui::Text("GPU Name: ");
+		ImGui::SameLine();
+		ImGui::TextColored(ImVec4(1, 1, 0, 0.75), "%s", gpuName);
+
+		const GLubyte* gpuVendor = glGetString(GL_VENDOR);
+		ImGui::Text("GPU Vendor: ");
+		ImGui::SameLine();
+		ImGui::TextColored(ImVec4(1, 1, 0, 0.75), "%s", gpuVendor);
+
+
 	}
 	ImGui::EndMenu();
 	ImGui::End();
