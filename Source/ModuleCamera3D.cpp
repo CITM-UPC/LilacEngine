@@ -57,7 +57,7 @@ update_status ModuleCamera3D::Update(float dt)
 	if(App->input->GetKey(SDL_SCANCODE_T) == KEY_REPEAT) newPos.y += speed;
 	if(App->input->GetKey(SDL_SCANCODE_G) == KEY_REPEAT) newPos.y -= speed;
 	
-	if(App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos = (0, 0, 0);
+	if(App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos /*= (0, 0, 0)*/;
 
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
@@ -69,16 +69,9 @@ update_status ModuleCamera3D::Update(float dt)
 	bool quit = false;
 	int scrollValue = 0;
 
-	
-	SDL_Event e;
-		if (e.wheel.y > 0) {
-			// Mousewheel scrolled up, move forwards
-			newPos -= Z * speed;
-		}
-		else if (e.wheel.y < 0) {
-			// Mousewheel scrolled down, move backwards
-			newPos += Z * speed;
-		}
+	if (SDL_MOUSEWHEEL > 0) newPos -= Z * speed;
+	if (SDL_MOUSEWHEEL < 0) newPos += Z * speed;
+
 
 	/*Position += newPos;
 	Reference += newPos;*/
